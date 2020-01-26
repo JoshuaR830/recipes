@@ -1,0 +1,22 @@
+{
+  "name": "home-page",
+  "version": "1.0.0",
+  "description": "The home page for my experiments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshuaR830/experiments-home.git"
+  },
+  "author": "Joshua Richardson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshuaR830/experiments-home/issues"
+  },
+  "homepage": "https://github.com/JoshuaR830/experiments-home#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
