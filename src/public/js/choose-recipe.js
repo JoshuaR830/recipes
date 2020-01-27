@@ -28,7 +28,7 @@ function setupMethod(method) {
                     <div id="status-number-${counter}" class="status-number">${counter}</div>
                     <div id="status-tick-${counter}" class="status-tick hidden"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
                 </div>
-                <div class="step-description description-complete">${step}</div>
+                <div id="step-description-${counter}" class="step-description">${step}</div>
             </div>`;
     });
     stepContainer.innerHTML = html;
@@ -47,6 +47,8 @@ function setupMethod(method) {
 function stepCompleted(stepNumber) {
     document.getElementById(`status-number-${stepNumber}`).style.display = 'none';
     document.getElementById(`status-tick-${stepNumber}`).style.display = 'inline-block';
+    document.getElementById(`step-description-${stepNumber}`).classList.add('description-complete');
+
 }
 
 function setupIngredients(ingredients) {
