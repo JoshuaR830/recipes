@@ -1,1 +1,22 @@
-<!-- Put the main page content in this container -->
+<div class="container">
+    <div class="recipe-container">
+        <div class="switcher-container">
+            <div id="method" class="switcher active-switcher">Method</div>
+            <div id="ingredients" class="switcher">Ingredients</div>
+        </div>
+        <div class="step-row">
+            <div class="status status-complete">
+                <!-- <div>1</div> -->
+                <div><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
+            </div>
+            <div class="step-description description-complete">Description</div>
+        </div>
+        <div class="step-row">
+            <div class="status status-incomplete">
+                <div>2</div>
+                <!-- <div><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div> -->
+            </div>
+            <div class="step-description">Description</div>
+        </div>
+    </div>
+</div>
