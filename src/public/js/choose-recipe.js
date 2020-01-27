@@ -37,10 +37,16 @@ function setupMethod(method) {
     statuses.forEach(function(status) {
         status.addEventListener('click', function(event) {
             console.log('Clicked the status')
-            console.log(event.currentTarget.id.replace('status-container-', ''));
-
+            var stepNumber = event.currentTarget.id.replace('status-container-', '');
+            console.log(stepNumber);
+            stepCompleted(stepNumber);
         })
     })
+}
+
+function stepCompleted(stepNumber) {
+    document.getElementById(`status-number-${stepNumber}`).style.display = 'none';
+    document.getElementById(`status-tick-${stepNumber}`).style.display = 'inline-block';
 }
 
 function setupIngredients(ingredients) {
