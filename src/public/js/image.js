@@ -15,7 +15,7 @@ window.addEventListener('load', function() {
             var description = document.getElementById('recipe-description').value;
             var imageUrl = `http://flatfish.online:38120/images/${myImage[0].name}`;
 
-            putRecipe(name, description, imageUrl)
+            postRecipe(name, description, imageUrl)
         }
     })
 
