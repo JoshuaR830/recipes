@@ -22,6 +22,7 @@ window.addEventListener('load', function() {
 
     function postRecipe(name, description, imageUrl) {
         console.log("Hi");
+        console.log(name, description, imageUrl);
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", "http://localhost:5000/api/addrecipe");
         var data = {};
