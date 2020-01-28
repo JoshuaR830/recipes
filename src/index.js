@@ -40,6 +40,7 @@ app.post('/fileupload', function(req, res) {
         var tempPath = files.filetoupload.path;
         console.log(tempPath);
         var permPath = '/public/images/' + files.filetoupload.name;
+        console.log(permPath);
         fs.rename(tempPath, permPath, function(err) {
             if (err) throw err;
             res.write('File uploaded and moved');
