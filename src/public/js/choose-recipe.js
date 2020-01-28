@@ -1,5 +1,6 @@
 function onRecipesLoaded() {
-    renderRecipes();
+    console.log("Hello");
+    getRecipeIds();
 }
 
 function displaySpecificRecipe(event) {
@@ -66,23 +67,34 @@ function setupIngredients(ingredients) {
 function getRecipeById(id) {
     console.log(`Make a request for the ${id} recipe`);
     var details = {"method":["step 1", "step 2"], "ingredients":["butter", "flour"]};
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    };
+
+    xhttp.open("GET", "http://flatfish.online:35001/api/recipes/"+id);
+    xhttp.send();
+
     return details;
 }
 
 // All available recipes displayed
-function renderRecipes() {
+function renderRecipes(recipes) {
     var recipeSelector = document.getElementById('recipe-selector-container');
 
-    var recipes = getRecipeIds();
+    // var recipes = getRecipeIds();
     var html = "";
 
     recipes.forEach(function(recipe) {
-        html += `<div id="${recipe}" class="card">
+        html += `<div id="${recipe.Id}" class="card">
                     <div class="card-image">
                         <img class="image" src="/images/color-wheel.png">
                     </div>
                     <div class="card-body">
-                        <div class="card-title">${recipe}</div>
+                        <div class="card-title">${recipe.Name}</div>
                         <div class="card-text">A delicious recipe for you</div>
                         </div>
                 </div>`
@@ -97,5 +109,19 @@ function renderRecipes() {
 // Gets all available recipes and returns an array of id's
 function getRecipeIds() {
     var recipeIds = ['abcd', 'efgh', 'ijkl'];
-    return recipeIds;
+
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = this.responseText;
+            recipeIds = response;
+            console.log(JSON.parse(response));
+            console.log(typeof JSON.parse(response));
+            renderRecipes(JSON.parse(response));
+        }
+    };
+
+    xhttp.open("GET", "http://flatfish.online:35001/api/recipes");
+    xhttp.send();
 }
