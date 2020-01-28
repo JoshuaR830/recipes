@@ -108,9 +108,6 @@ function renderRecipes(recipes) {
 
 // Gets all available recipes and returns an array of id's
 function getRecipeIds() {
-    var recipeIds = ['abcd', 'efgh', 'ijkl'];
-
-
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -124,4 +121,50 @@ function getRecipeIds() {
 
     xhttp.open("GET", "http://localhost:5000/api/recipes");
     xhttp.send();
+}
+
+
+function postRecipe() {
+    console.log("Hi");
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "http://localhost:5000/api/addrecipe");
+    var data = {};
+    data.name = "Joshua";
+    data.description = "Joshua did this";
+    data.imageUrl = "http://flatfish.online:38120/images/AtUllswater.png";
+
+    var json = JSON.stringify(data);
+
+    console.log(json);
+
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+    xhttp.send(json);
+}
+
+function putRecipe(name, description, imageUrl) {
+    console.log("Hi");
+    var xhttp = new XMLHttpRequest();
+    // Needs an ID - used for updating
+    xhttp.open("PUT", "http://localhost:5000/api/addrecipe");
+    var data = {};
+    data.name = name;
+    data.description = description;
+    data.imageUrl = imageUrl;
+
+    var json = JSON.stringify(data);
+
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var users = JSON.parse(this.responseText);
+        }
+    }
+    xhttp.send(json);
 }

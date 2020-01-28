@@ -10,6 +10,12 @@ window.addEventListener('load', function() {
             var imagePreview = document.createElement('img');
             imagePreview.src = window.URL.createObjectURL(myImage[0]);
             preview.appendChild(imagePreview);
+            
+            var name = document.getElementById('recipe-name').value;
+            var description = document.getElementById('recipe-description').value;
+            var imageUrl = `http://flatfish.online:38120/images/${myImage[0].name}`;
+
+            putRecipe(name, description, imageUrl)
         }
     })
 
