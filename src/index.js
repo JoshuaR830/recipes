@@ -39,7 +39,7 @@ app.post('/fileupload', function(req, res) {
     form.parse(req, function(err, fields, files) {
         var tempPath = files.filetoupload.path;
         console.log(tempPath);
-        var permPath = '/home/user/temp/recipes/images/' + files.filetoupload.name;
+        var permPath = '/public/images/' + files.filetoupload.name;
         fs.rename(tempPath, permPath, function(err) {
             if (err) throw err;
             res.write('File uploaded and moved');
