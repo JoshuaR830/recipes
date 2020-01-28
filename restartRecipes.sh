@@ -7,7 +7,7 @@ docker rm recipe-manager
 echo "Build the new recipe-manager docker image"
 docker build -t root/recipe-manager-image .
 echo "Running the new recipe-manager container"
-docker run --name recipe-manager --restart always -p 38120:8002 -d root/recipe-manager-image -v $HOME/user/temp/recipes/public/images/uploads:/public/images/uploads
+docker run --name recipe-manager --restart always -p 38120:8002 -d root/recipe-manager-image -v $HOME/user/temp/recipes/recipes/src/public/images:/public/images
 echo ""
 
 echo "Complete"
