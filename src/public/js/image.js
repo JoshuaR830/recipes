@@ -18,6 +18,7 @@ window.addEventListener('load', function() {
     document.getElementById('submit-form').addEventListener('click', function() {
         var name = document.getElementById('recipe-name').value;
         var description = document.getElementById('recipe-description').value;
+        var myImage = input.files;
         var imageUrl = `http://flatfish.online:38120/images/${myImage[0].name}`;
 
         postRecipe(name, description, imageUrl)
