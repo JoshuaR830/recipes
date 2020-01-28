@@ -122,6 +122,6 @@ function getRecipeIds() {
         }
     };
 
-    xhttp.open("GET", "http://localhost:64443/api/recipes");
+    xhttp.open("GET", "http://localhost:5000/api/recipes");
     xhttp.send();
 }
