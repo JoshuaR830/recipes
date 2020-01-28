@@ -91,11 +91,11 @@ function renderRecipes(recipes) {
     recipes.forEach(function(recipe) {
         html += `<div id="${recipe.Id}" class="card">
                     <div class="card-image">
-                        <img class="image" src="/images/color-wheel.png">
+                        <img class="image" src="${recipe.ImageUrl}">
                     </div>
                     <div class="card-body">
                         <div class="card-title">${recipe.Name}</div>
-                        <div class="card-text">A delicious recipe for you</div>
+                        <div class="card-text">${recipe.Description}</div>
                         </div>
                 </div>`
     });
@@ -122,6 +122,6 @@ function getRecipeIds() {
         }
     };
 
-    xhttp.open("GET", "http://flatfish.online:35001/api/recipes");
+    xhttp.open("GET", "http://localhost:64443/api/recipes");
     xhttp.send();
 }
