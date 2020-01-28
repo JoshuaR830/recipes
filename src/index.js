@@ -37,6 +37,7 @@ app.get('/image-upload', function(req, res) {
 app.post('/fileupload', function(req, res) {
     var form = formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
+        console.log(fields);
         var tempPath = files.filetoupload.path;
         console.log(tempPath);
         var permPath = '/public/images/' + files.filetoupload.name;

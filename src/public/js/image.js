@@ -11,13 +11,17 @@ window.addEventListener('load', function() {
             imagePreview.src = window.URL.createObjectURL(myImage[0]);
             preview.appendChild(imagePreview);
             
-            var name = document.getElementById('recipe-name').value;
-            var description = document.getElementById('recipe-description').value;
-            var imageUrl = `http://flatfish.online:38120/images/${myImage[0].name}`;
-
-            postRecipe(name, description, imageUrl)
+            
         }
     })
+
+    document.getElementById('submit-form').addEventListener('click', function() {
+        var name = document.getElementById('recipe-name').value;
+        var description = document.getElementById('recipe-description').value;
+        var imageUrl = `http://flatfish.online:38120/images/${myImage[0].name}`;
+
+        postRecipe(name, description, imageUrl)
+    });
 
 
     function postRecipe(name, description, imageUrl) {
