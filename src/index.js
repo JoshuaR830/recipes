@@ -39,12 +39,23 @@ app.post('/fileupload', function(req, res) {
     form.parse(req, function(err, fields, files) {
         var tempPath = files.filetoupload.path;
         console.log(tempPath);
-        var permPath = '/public/images/uploads' + files.filetoupload.name;
+        var permPath = '/public/images/' + files.filetoupload.name;
         console.log(permPath);
-        fs.rename(tempPath, permPath, function(err) {
+
+        fs.readFile(tempPath, function(err, data) {
             if (err) throw err;
-            res.write('File uploaded and moved');
-            res.end();
+
+            fs.writeFile(permPath, data, function(err) {
+                if (err) throw err;
+                res.write('File uploaded and moved');
+                console.log("File written");
+                res.end();
+            });
+        })
+
+        fs.unlink(tempPath, function(err) {
+            if (err) throw err;
+            console.log('File deleted');
         })
         
     })
