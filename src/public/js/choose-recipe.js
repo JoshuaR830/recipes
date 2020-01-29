@@ -1,3 +1,4 @@
+var hostname = 'flatfish.online:38120';
 function onRecipesLoaded() {
     console.log("Hello");
 
@@ -81,7 +82,7 @@ function getRecipeById(id) {
         }
     };
 
-    xhttp.open("GET", "http://flatfish.online:35001/api/recipes/"+id);
+    xhttp.open("GET", `http://${hostname}/api/recipes/`+id);
     xhttp.send();
 
     return details;
@@ -125,7 +126,7 @@ function getRecipeIds() {
         }
     };
 
-    xhttp.open("GET", "http://localhost:5000/api/recipes");
+    xhttp.open("GET", `http://${hostname}/api/recipes`);
     xhttp.send();
 }
 
@@ -133,11 +134,11 @@ function getRecipeIds() {
 function postRecipe() {
     console.log("Hi");
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "http://localhost:5000/api/addrecipe");
+    xhttp.open("POST", `http://${hostname}}/api/addrecipe`);
     var data = {};
     data.name = "Joshua";
     data.description = "Joshua did this";
-    data.imageUrl = "http://flatfish.online:38120/images/AtUllswater.png";
+    data.imageUrl = `http://${hostname}/images/AtUllswater.png`;
 
     var json = JSON.stringify(data);
 
@@ -157,7 +158,7 @@ function putRecipe(name, description, imageUrl) {
     console.log("Hi");
     var xhttp = new XMLHttpRequest();
     // Needs an ID - used for updating
-    xhttp.open("PUT", "http://localhost:5000/api/addrecipe");
+    xhttp.open("PUT", `http://${hostname}/api/addrecipe`);
     var data = {};
     data.name = name;
     data.description = description;
