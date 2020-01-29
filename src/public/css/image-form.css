@@ -5,10 +5,70 @@
 .form-container {
     width: calc(100% - 32px);
     max-width: 300px;
-    height: 300px;
     border-radius: 16px;
     margin-top: 16px;
     margin-left: 16px;
     margin-right: 16px;
     border: 1px solid var(--secondary);
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.preview-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px 16px 0 0;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.preview-image:hover {
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+
+.create-step-row {
+    display: inline-block;
+    box-sizing: border-box;
+
+    margin-bottom: 8px;
+    border-radius: 0px 32px 32px 0px;
+    width: 100%;
+}
+
+.input-detail {
+    display: inline-block;
+    width: calc(100% - 60px);
+    padding: 16px;
+    font-size: 24px;
+    box-sizing: border-box;
+    vertical-align: top;
+    height: 56px;
+    border: 1px solid var(--primary);
+}
+
+.recipe-step {
+    border-radius: 0px 32px 32px 0px;
+
+}
+
+.hide-submit-button {
+    display: none;
+}
+
+.floating-save-recipe-button {
+    background-color: var(--primary-variant);
+    width: 56px;
+    height: 56px;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    border-radius: 50%;
+    z-index: 2;
+    fill: var(--on-primary);
+}
+

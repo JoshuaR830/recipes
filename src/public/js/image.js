@@ -9,6 +9,7 @@ function onImageFormLoaded() {
             console.log(myImage[0].name);
             var imagePreview = document.createElement('img');
             imagePreview.src = window.URL.createObjectURL(myImage[0]);
+            imagePreview.classList.add('preview-image');
             preview.appendChild(imagePreview);          
         }
     })
