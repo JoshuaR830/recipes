@@ -48,7 +48,7 @@ app.post('/fileupload', function(req, res) {
 
             fs.writeFile(permPath, data, function(err) {
                 if (err) throw err;
-                res.write('File uploaded and moved');
+                res.redirect('/');
                 console.log("File written");
                 res.end();
             });

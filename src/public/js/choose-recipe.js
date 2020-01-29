@@ -1,5 +1,11 @@
 function onRecipesLoaded() {
     console.log("Hello");
+
+    var button = document.getElementById('add-recipe-button');
+    button.addEventListener('click', function() {
+        window.location.href = "/image-upload";
+    });
+
     getRecipeIds();
 }
 
@@ -83,7 +89,7 @@ function getRecipeById(id) {
 
 // All available recipes displayed
 function renderRecipes(recipes) {
-    var recipeSelector = document.getElementById('recipe-selector-container');
+    var recipeSelector = document.getElementById('selector-container');
 
     // var recipes = getRecipeIds();
     var html = "";

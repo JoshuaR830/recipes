@@ -62,3 +62,20 @@
 .hidden {
     display: none;
 }
+
+.floating-add-recipe-button {
+    background-color: red;
+    width: 56px;
+    height: 56px;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    border-radius: 50%;
+}
+
+@media only screen and (min-width: 600px) {
+    .floating-add-recipe-button {
+        right: 56px;
+        bottom: 56px;
+    }
+}
