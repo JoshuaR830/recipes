@@ -28,7 +28,7 @@ function onImageFormLoaded() {
         console.log("Hi");
         console.log(name, description, imageUrl);
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://localhost:5000/api/addrecipe");
+        xhttp.open("POST", "http://flatfish.online:35001/api/addrecipe");
         var data = {};
         data.name = name;
         data.description = description;
