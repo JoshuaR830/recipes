@@ -64,13 +64,15 @@
 }
 
 .floating-add-recipe-button {
-    background-color: red;
+    background-color: var(--primary-variant);
     width: 56px;
     height: 56px;
     position: fixed;
     right: 16px;
     bottom: 16px;
     border-radius: 50%;
+    z-index: 2;
+    fill: var(--on-primary);
 }
 
 @media only screen and (min-width: 600px) {
