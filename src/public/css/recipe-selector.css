@@ -1,10 +1,9 @@
 .card {
     vertical-align: top;
-    width: 344px;
+    width: 100%;
+    max-width: 300px;
     margin-top: 32px;
     height: 296px;
-    margin-left: 16px;
-    margin-right: 16px;
     background-color: var(--secondary);
     border-radius: 16px;
     display: inline-block;
@@ -79,5 +78,17 @@
     .floating-add-recipe-button {
         right: 56px;
         bottom: 56px;
+    }
+
+    .card {
+        vertical-align: top;
+        width: 344px;
+        margin-top: 32px;
+        height: 296px;
+        margin-left: 16px;
+        margin-right: 16px;
+        background-color: var(--secondary);
+        border-radius: 16px;
+        display: inline-block;
     }
 }
