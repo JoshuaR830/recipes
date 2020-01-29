@@ -3,8 +3,15 @@
 }
 
 .form-container {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.form-component {
     width: calc(100% - 32px);
     max-width: 300px;
+    min-width: 300px;
     border-radius: 16px;
     margin-top: 16px;
     margin-left: 16px;
@@ -70,5 +77,15 @@ input[type="file"] {
     border-radius: 50%;
     z-index: 2;
     fill: var(--on-primary);
+}
+
+@media only screen and (min-width: 600px) {
+    .form-container {
+        display: inline-flex;
+    }
+
+    .form-component {
+        margin: 16px;
+    }
 }
 
