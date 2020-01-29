@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+function onImageFormLoaded() {
     var input = document.getElementById('image-input');
     var preview = document.getElementById('preview');
 
@@ -9,9 +9,7 @@ window.addEventListener('load', function() {
             console.log(myImage[0].name);
             var imagePreview = document.createElement('img');
             imagePreview.src = window.URL.createObjectURL(myImage[0]);
-            preview.appendChild(imagePreview);
-            
-            
+            preview.appendChild(imagePreview);          
         }
     })
 
@@ -54,4 +52,4 @@ window.addEventListener('load', function() {
         console.log("Change");
         return true;
     }
-})
+}

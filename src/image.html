@@ -1,17 +1,40 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <script src="/js/image.js"></script>
-</head>
-<body>
-    <h1>Hi</h1>
-
-    <form action="fileupload" method="post" enctype="multipart/form-data">
-        <input type="file" id="image-input" accept="image/png, image/jpeg" name="filetoupload">
-        <input type="text" id="recipe-name">
-        <input type="text" id="recipe-description">
-        <button id="submit-form" type="submit">
-    </form>
-    <div id="preview"></div>
-</body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/css/backdrop-variables.css">
+        <link rel="stylesheet" type="text/css" href="/css/backdrop-main.css">
+        <link rel="stylesheet" type="text/css" href="/css/backdrop-variables.css">
+        <link rel="stylesheet" type="text/css" href="/css/image-form.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="icon" href="/images/experiments.png">
+        <script src="/js/themes.js"></script>
+        <script src="/js/choose-recipe.js"></script>
+        <script src="/js/backdrop.js"></script>
+        <script src="/js/load-image-form.js"></script>
+        <script src="/js/image.js"></script>
+    </head>
+    <body>
+        <div class="backdrop">
+            <div class="background">
+                <div class="title-bar">
+                    <div id="menu-reveal" class="menu reveal-background"><svg class="image-size" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></div>
+                    <div id="menu-hide" class="menu hide-background hidden"><svg class="image-size" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+                    <div class="title"></div>
+                </div>
+                <div class="background-content-container"></div>
+            </div>
+            <div class="foreground-container">
+                <div id="foreground" class="foreground">
+                    <div class="subtitle-container">
+                        <div class="subtitle"></div>
+                        <div id="show-foreground-button" class="show-foreground-button hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                        </div>
+                    </div>
+                    <div class="foreground-content-container"></div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
-

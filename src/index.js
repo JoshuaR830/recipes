@@ -29,6 +29,11 @@ app.get('/subtitle', function(req, res) {
     res.sendFile(`${__dirname}/partials/subtitle.html`);
 });
 
+app.get('/image-form', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.sendFile(`${__dirname}/partials/image-form.html`);
+});
+
 app.get('/image-upload', function(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     res.sendFile(`${__dirname}/image.html`);

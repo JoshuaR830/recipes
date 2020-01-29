@@ -1,0 +1,14 @@
+.title {
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-container {
+    width: calc(100% - 32px);
+    max-width: 300px;
+    height: 300px;
+    border-radius: 16px;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    border: 1px solid var(--secondary);
+}
