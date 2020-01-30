@@ -75,7 +75,11 @@ function onImageFormLoaded() {
         data.description = description;
         data.imageUrl = imageUrl;
         data.methodSteps = methodSteps;
-        data.ingredient = ingredients;
+        data.ingredients = ingredients;
+
+        console.log("Hello");
+        console.log(methodSteps);
+        console.log(ingredients);
 
         var json = JSON.stringify(data);
     
