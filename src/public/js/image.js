@@ -47,16 +47,21 @@ function onImageFormLoaded() {
         var method = document.querySelectorAll('.method-step')
         var ingredientItems = document.querySelectorAll('.ingredient-item')
         
-        var methodSteps = {};
-        var ingredients = {};
+        var methodSteps = "{";
+        var ingredients = "{";
 
         method.forEach(step => {
-            methodSteps.push(step.firstChild.value);
+            methodSteps += step.firstChild.value;
         });
 
+        methodSteps += "}";
+
         ingredientItems.forEach(ingredient => {
-            ingredients.push(ingredient.firstChild.value);
+            ingredients += ingredient.firstChild.value;
         });
+
+        ingredients += "}";
+
 
         console.log(methodSteps);
         console.log(ingredients);
