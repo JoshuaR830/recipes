@@ -61,11 +61,11 @@ function onImageFormLoaded() {
         console.log(methodSteps);
         console.log(ingredients);
 
-        postRecipe(name, description, imageUrl, methodSteps, ingredient);
+        postRecipe(name, description, imageUrl, methodSteps, ingredients);
     });
 
 
-    function postRecipe(name, description, imageUrl, methodSteps, ingredient) {
+    function postRecipe(name, description, imageUrl, methodSteps, ingredients) {
         console.log("Hi");
         console.log(name, description, imageUrl);
         var xhttp = new XMLHttpRequest();
@@ -75,7 +75,7 @@ function onImageFormLoaded() {
         data.description = description;
         data.imageUrl = imageUrl;
         data.methodSteps = methodSteps;
-        data.ingredient = ingredient;
+        data.ingredient = ingredients;
 
         var json = JSON.stringify(data);
     
