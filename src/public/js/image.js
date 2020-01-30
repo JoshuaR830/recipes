@@ -44,28 +44,28 @@ function onImageFormLoaded() {
         var myImage = input.files;
         var imageUrl = `http://flatfish.online:38120/images/${myImage[0].name}`;
 
-        var methodSteps = document.querySelectorAll('.method-step')
+        var method = document.querySelectorAll('.method-step')
         var ingredientItems = document.querySelectorAll('.ingredient-item')
         
-        var method = [];
+        var methodSteps = [];
         var ingredients = [];
 
-        methodSteps.forEach(step => {
-            method.push(step.firstChild.value);
+        method.forEach(step => {
+            methodSteps.push(step.firstChild.value);
         });
 
         ingredientItems.forEach(ingredient => {
             ingredients.push(ingredient.firstChild.value);
         });
 
-        console.log(method);
+        console.log(methodSteps);
         console.log(ingredients);
 
-        postRecipe(name, description, imageUrl)
+        postRecipe(name, description, imageUrl, methodSteps, ingredient);
     });
 
 
-    function postRecipe(name, description, imageUrl) {
+    function postRecipe(name, description, imageUrl, methodSteps, ingredient) {
         console.log("Hi");
         console.log(name, description, imageUrl);
         var xhttp = new XMLHttpRequest();
@@ -74,8 +74,9 @@ function onImageFormLoaded() {
         data.name = name;
         data.description = description;
         data.imageUrl = imageUrl;
+        data.methodSteps = methodSteps;
+        data.ingredient = ingredient;
 
-    
         var json = JSON.stringify(data);
     
         console.log(json);
