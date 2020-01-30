@@ -58,9 +58,37 @@ input[type="file"] {
     border: 1px solid var(--primary);
 }
 
-.recipe-step {
-    border-radius: 0px 32px 32px 0px;
+.input-addition {
+    display: inline-block;
+    width: calc(60% - 60px);
+    font-size: 24px;
+    box-sizing: border-box;
+    vertical-align: top;
+    height: 56px;
+    border: 1px solid var(--secondary);
+    background-color: var(--primary-variant);
+    line-height: 56px;
+}
 
+.input-addition:hover {
+    cursor: pointer;
+    border-color: var(--secondary-variant)
+}
+
+.add-step {
+    height: 56px;
+    width: 56px;
+    float: right;
+    fill: var(--on-primary);
+}
+
+.add-step-text {
+    float: left;
+    padding-left: 16px;
+}
+
+.recipe-step {
+    border-radius: 32px 32px 32px 32px;
 }
 
 .hide-submit-button {
