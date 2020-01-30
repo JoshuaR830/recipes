@@ -47,8 +47,8 @@ function onImageFormLoaded() {
         var method = document.querySelectorAll('.method-step')
         var ingredientItems = document.querySelectorAll('.ingredient-item')
         
-        var methodSteps = [];
-        var ingredients = [];
+        var methodSteps = {};
+        var ingredients = {};
 
         method.forEach(step => {
             methodSteps.push(step.firstChild.value);
