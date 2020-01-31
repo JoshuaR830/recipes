@@ -50,7 +50,7 @@
     box-sizing: border-box;
     vertical-align: middle;
     border: 1px solid var(--primary);
-    font-family: 'Roboto' sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .status {
@@ -64,7 +64,7 @@
     vertical-align: middle;
     border-radius: 50%;
     color: var(--on-secondary);
-    font-family: 'Roboto' sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .status-incomplete {
