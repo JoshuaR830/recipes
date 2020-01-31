@@ -1,6 +1,6 @@
 .recipe-container {
     display: none;
-    width: 100%;
+    width: calc(100% -32px);
     max-width: 300px;
 }
 
@@ -13,20 +13,23 @@
 }
 
 .switcher {
+    font-family: 'Roboto', sans-serif;
     border-radius: 32px;
     width: 40%;
     height: 56px;
     box-sizing: border-box;
     display: inline-block;
-    font-size: 24px;
-    padding: 16px;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 20px;
     background-color: var(--primary);
-    
+    color: var(--on-primary)
 }
 
 .active-switcher {
     background-color: var(--secondary);
     box-shadow: 0 0 8px var(--secondary-variant);
+    color: var(--on-secondary)
 }
 
 .step-row {
@@ -40,13 +43,12 @@
 
 .step-description {
     display: inline-block;
-    width: calc(100% - 60px);
+    width: calc(100% - 70px);
     padding: 16px;
-    font-size: 24px;
+    font-size: 16px;
     border-radius: 0px 32px 32px 0px;
     box-sizing: border-box;
-    vertical-align: top;
-    height: 56px;
+    vertical-align: middle;
     border: 1px solid var(--primary);
 }
 
@@ -56,9 +58,12 @@
     height: 56px;
     padding: 16px;
     font-size: 24px;
+    line-height: 24px;
     box-sizing: border-box;
-    vertical-align: top;
+    vertical-align: middle;
     border-radius: 50%;
+    color: var(--on-secondary);
+    font-family: 'Roboto' sans-serif;
 }
 
 .status-incomplete {
@@ -79,4 +84,16 @@
 .description-complete {
     text-decoration: line-through;
     opacity: 0.5;
+}
+
+@media only screen and (min-width: 600px) {
+    .recipe-container {
+        max-width: 500px;
+    }
+
+    .switcher {
+        font-size: 24px;
+        line-height: 24px;
+        padding: 16px;
+    }
 }
