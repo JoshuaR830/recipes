@@ -12,7 +12,7 @@ function onRecipesLoaded() {
 
 function displaySpecificRecipe(event) {
     var id = event.currentTarget.id;
-    var details = getRecipeById(id);
+    getRecipeById(id);
 }
 
 function renderSpecificRecipe(details) {
@@ -20,8 +20,8 @@ function renderSpecificRecipe(details) {
     var specificRecipe = document.getElementById('recipe-container');
     recipeSelector.style.display = 'none';
     specificRecipe.style.display = 'inline-block';
-    setupMethod(details.methodSteps);
-    setupIngredients(details.ingredients);
+    setupMethod(details.MethodSteps);
+    setupIngredients(details.Ingredients);
     console.log("Recipe displayed");
 }
 
