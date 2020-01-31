@@ -20,6 +20,7 @@ function renderSpecificRecipe(details) {
     var specificRecipe = document.getElementById('recipe-container');
     recipeSelector.style.display = 'none';
     specificRecipe.style.display = 'inline-block';
+    console.log(">>>", details.MethodSteps);
     setupMethod(details.MethodSteps);
     setupIngredients(details.Ingredients);
     console.log("Recipe displayed");
@@ -83,7 +84,7 @@ function getRecipeById(id) {
         if (this.readyState == 4 && this.status == 200) {
             console.log(">>Hello<<");
             console.log(this.responseText);
-            renderSpecificRecipe(this.responseText)
+            renderSpecificRecipe(JSON.parse(this.responseText));
         }
     };
 
