@@ -13,11 +13,14 @@ function onRecipesLoaded() {
 function displaySpecificRecipe(event) {
     var id = event.currentTarget.id;
     var details = getRecipeById(id);
+}
+
+function renderSpecificRecipe(details) {
     var recipeSelector = document.getElementById('recipe-selector-container');
     var specificRecipe = document.getElementById('recipe-container');
     recipeSelector.style.display = 'none';
     specificRecipe.style.display = 'inline-block';
-    setupMethod(details.method);
+    setupMethod(details.methodSteps);
     setupIngredients(details.ingredients);
     console.log("Recipe displayed");
 }
@@ -78,14 +81,16 @@ function getRecipeById(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            console.log(">>Hello<<");
             console.log(this.responseText);
+            renderSpecificRecipe(this.responseText)
         }
     };
 
     xhttp.open("GET", `http://${hostname}/api/recipes/`+id);
     xhttp.send();
 
-    return details;
+    
 }
 
 // All available recipes displayed
