@@ -50,6 +50,7 @@
     box-sizing: border-box;
     vertical-align: middle;
     border: 1px solid var(--primary);
+    font-family: 'Roboto' sans-serif;
 }
 
 .status {
