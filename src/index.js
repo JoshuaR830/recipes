@@ -14,6 +14,11 @@ app.get('/recipes/:uid', function(req, res, next) {
     res.sendFile(`${__dirname}/backdrop.html`);
 });
 
+app.get('/drag-and-drop', function(req, res) {
+    console.log(req.params.uid);
+    res.sendFile(`${__dirname}/drag-and-drop.html`);
+});
+
 app.get('/foreground', function(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     res.sendFile(`${__dirname}/partials/foreground.html`);

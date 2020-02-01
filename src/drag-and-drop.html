@@ -2,17 +2,31 @@
 
 <hmtl>
     <head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/css/backdrop-variables.css">
+        <link rel="stylesheet" type="text/css" href="/css/backdrop-main.css">
+        <link rel="stylesheet" type="text/css" href="/css/backdrop-variables.css">
+        <link rel="stylesheet" type="text/css" href="/css/image-form.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="icon" href="/images/experiments.png">
         <style>
             .below {
-                box-shadow: 0 0 16px black;
+                box-shadow: 0 0 16px hotpink;
             }
             .above {
-                box-shadow: 0 0 16px black;
+                box-shadow: 0 0 16px hotpink;
+            }
+            .on-drag {
+                box-shadow: 0 0 16px cyan;
+            }
+            .drag-and-drop {
+                padding: 20px;
+                border: 1px solid red;
+                margin: 5px;
             }
         </style>
         <script>
-            var data = ['A', 'B', 'C', 'D', 'E', 'F'];
+            var data = [];
             var dragFrom = "drag3";
             var dragTo = "drag3";
 
@@ -20,10 +34,50 @@
 
             window.addEventListener('load', function(event) {
                 console.log("hi");
-                reorderData();
+                // reorderData();
+
+                // for (var i = 0; i < data.length; i ++) {
+                //     console.log(i);
+                //     document.getElementById(`input${i}`).addEventListener('input', function(event) {
+                //         console.log("Change")
+                //         id = event.target.id.replace('input', '');
+                //         data[id] = document.getElementById(`input${id}`).value;
+                //     });
+                // }
+
+
+                var addButton = document.getElementById('add-button');
+                addButton.addEventListener('click', function() {
+                    console.log("Method addition");
+
+                    data.push("");
+                    var thisId = data.length - 1
+
+                    var methodStep = document.createElement('div');
+                    methodStep.id = `drag${thisId}`;
+                    methodStep.classList.add('drag-and-drop');
+                    methodStep.setAttribute('draggable', true);
+                    methodStep.setAttribute('ondragstart', 'drag(event)');
+                    methodStep.setAttribute('ondrop', 'drop(event)');
+                    methodStep.setAttribute('ondragover', 'allowDrop(event)');
+                    methodStep.setAttribute('ondragleave', 'noLine(event)');
+
+                    methodStep.innerHTML = `<input id="input${thisId}">`
+
+                    document.getElementById('drag-and-drop-container').appendChild(methodStep);
+
+                    document.getElementById(`input${thisId}`).addEventListener('input', function(event) {
+                        console.log("Change")
+                        id = event.target.id.replace('input', '');
+                        data[id] = document.getElementById(`input${thisId}`).value;
+                    });
+                });
+
             });
 
             function reorderData() {
+
+                console.log(data);
 
                 dragFromInt = dragFrom.replace('drag', '');
                 dragToInt = dragTo.replace('drag', '');
@@ -32,6 +86,7 @@
                 data.splice(dragToInt, 0, removedData);
 
                 for (var i = 0; i < data.length; i ++) {
+                    console.log(data[i]);
                     document.getElementById(`input${i}`).value = data[i];
                 }
             }
@@ -66,6 +121,8 @@
                 console.log(e.target.id);
                 dragFrom = e.target.id;
                 console.log(e.clientX);
+                document.getElementById(dragFrom).classList.add('on-drag');
+
             }
 
             function drop(e) {
@@ -75,6 +132,9 @@
                 var divId = e.target.id;
                 console.log(e.target.id);
                 dragTo = e.target.id;
+
+                document.getElementById(dragFrom).classList.remove('on-drag');
+
                 
                 document.getElementById(divId).classList.remove('below');
                 document.getElementById(divId).classList.remove('above');
@@ -83,12 +143,17 @@
         </script>
     </head>
     <body>
-        <div id="drag0" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input0"></div>
-        <div id="drag1" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input1"></div>
-        <div id="drag2" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input2"></div>
-        <div id="drag3" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input3"></div>
-        <div id="drag4" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input4"></div>
-        <div id="drag5" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input5"></div>
+
+
+        <div id="drag-and-drop-container">
+        </div>
+
+        <div id="add-button" class="create-step-row recipe-step input-addition">
+            <div class="add-step-text">Add</div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="add-step" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+        </div>
+
+      
     </body>
 </hmtl>
 
