@@ -1,11 +1,11 @@
 .below {
-    box-shadow: 0 0 16px hotpink;
+    box-shadow: 0 0 16px var(--primary);
 }
 .above {
-    box-shadow: 0 0 16px hotpink;
+    box-shadow: 0 0 16px var(--primary);
 }
 .on-drag {
-    box-shadow: 0 0 16px cyan;
+    box-shadow: 0 0 16px var(--secondary);
 }
 .drag-and-drop {
     padding: 20px;
