@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<hmtl>
+    <head>
+
+        <style>
+            .below {
+                box-shadow: 0 0 16px black;
+            }
+            .above {
+                box-shadow: 0 0 16px black;
+            }
+        </style>
+        <script>
+            var data = ['A', 'B', 'C', 'D', 'E', 'F'];
+            var dragFrom = "drag3";
+            var dragTo = "drag3";
+
+            var originalPosition;
+
+            window.addEventListener('load', function(event) {
+                console.log("hi");
+                reorderData();
+            });
+
+            function reorderData() {
+
+                dragFromInt = dragFrom.replace('drag', '');
+                dragToInt = dragTo.replace('drag', '');
+
+                var removedData = data.splice(dragFromInt, 1);
+                data.splice(dragToInt, 0, removedData);
+
+                for (var i = 0; i < data.length; i ++) {
+                    document.getElementById(`input${i}`).value = data[i];
+                }
+            }
+
+            function allowDrop(e) {
+                e.preventDefault();
+                var divId = e.target.id;
+                
+                console.log(originalPosition);
+                if (e.clientX > originalPosition) {
+                    document.getElementById(divId).classList.add('below');
+                    document.getElementById(divId).classList.remove('above');
+                } else {
+                    document.getElementById(divId).classList.add('above');
+                    document.getElementById(divId).classList.remove('below');
+                }
+            }
+
+            function underline(e) {
+                console.log(divId);
+            }
+
+            function noLine(e) {
+                var divId = e.target.id;
+                document.getElementById(divId).classList.remove('below');
+                document.getElementById(divId).classList.remove('above');
+            }
+
+            function drag(e) {
+                originalPosition = e.clientX;
+                e.dataTransfer.setData("text", e.target.id);
+                console.log(e.target.id);
+                dragFrom = e.target.id;
+                console.log(e.clientX);
+            }
+
+            function drop(e) {
+                e.preventDefault();
+                var data = e.preventDefault();
+                var data = e.dataTransfer.getData("text");
+                var divId = e.target.id;
+                console.log(e.target.id);
+                dragTo = e.target.id;
+                
+                document.getElementById(divId).classList.remove('below');
+                document.getElementById(divId).classList.remove('above');
+                reorderData();
+            }
+        </script>
+    </head>
+    <body>
+        <div id="drag0" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input0"></div>
+        <div id="drag1" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input1"></div>
+        <div id="drag2" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input2"></div>
+        <div id="drag3" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input3"></div>
+        <div id="drag4" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input4"></div>
+        <div id="drag5" style="padding: 20px; border: 1px solid red; margin: 5px;" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="noLine(event)"><input id="input5"></div>
+    </body>
+</hmtl>
+
