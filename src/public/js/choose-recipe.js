@@ -1,4 +1,21 @@
 var hostname = 'flatfish.online:35001';
+
+window.addEventListener('popstate', function(e) {
+    path = location.pathname;
+    console.log(path);
+    var allRecipes = document.getElementById('recipe-selector-container');
+    var recipe = document.getElementById('recipe-container');
+
+    if (path == '/') {
+        recipe.style.display = "none";
+        allRecipes.style.display = 'inline-block'
+    }
+    else {
+        allRecipes.style.display = 'none'
+        recipe.style.display = "inline-block";
+    }
+});
+
 function onRecipesLoaded() {
     console.log("Hello");
 
@@ -12,6 +29,7 @@ function onRecipesLoaded() {
 
 function displaySpecificRecipe(event) {
     var id = event.currentTarget.id;
+    history.pushState(null, null, 'recipes/' + id);
     getRecipeById(id);
 }
 
@@ -60,7 +78,6 @@ function stepCompleted(stepNumber) {
     document.getElementById(`status-number-${stepNumber}`).style.display = 'none';
     document.getElementById(`status-tick-${stepNumber}`).style.display = 'inline-block';
     document.getElementById(`step-description-${stepNumber}`).classList.add('description-complete');
-
 }
 
 function setupIngredients(ingredients) {
@@ -76,6 +93,7 @@ function setupIngredients(ingredients) {
 
 // Returns the details for a specific recipe
 function getRecipeById(id) {
+    console.log(id);
     console.log(`Make a request for the ${id} recipe`);
     var details = {"method":["step 1", "step 2"], "ingredients":["butter", "flour"]};
 
@@ -97,8 +115,7 @@ function getRecipeById(id) {
 // All available recipes displayed
 function renderRecipes(recipes) {
     var recipeSelector = document.getElementById('selector-container');
-
-    // var recipes = getRecipeIds();
+    var allRecipes = document.getElementById('recipe-selector-container');
     var html = "";
 
     recipes.forEach(function(recipe) {
@@ -112,11 +129,21 @@ function renderRecipes(recipes) {
                         </div>
                 </div>`
     });
+    
     recipeSelector.innerHTML = html;
     var recipesCards = document.querySelectorAll('.card');
     recipesCards.forEach(function(recipe) {
         recipe.addEventListener('click', displaySpecificRecipe);
     });
+
+    if(location.pathname.includes('/recipes/')) {
+        allRecipes.style.display = 'none';
+        getRecipeById(location.pathname.split("/")[2]);
+    } else {
+        allRecipes.style.display = 'inline-block';
+    }
+
+    
 }
 
 // Gets all available recipes and returns an array of id's

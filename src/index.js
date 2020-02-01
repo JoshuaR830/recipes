@@ -9,6 +9,11 @@ app.get('/', function(req, res) {
     res.sendFile(`${__dirname}/backdrop.html`);
 });
 
+app.get('/recipes/:uid', function(req, res, next) {
+    console.log(req.params.uid);
+    res.sendFile(`${__dirname}/backdrop.html`);
+});
+
 app.get('/foreground', function(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     res.sendFile(`${__dirname}/partials/foreground.html`);
