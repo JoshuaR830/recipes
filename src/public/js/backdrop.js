@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+    console.log('Loaded');
     fastThemeSwitcher(getCookie("theme"));
     var buttons = document.querySelectorAll('.button');
     var foreground = document.getElementById('foreground');
@@ -12,6 +13,7 @@ window.addEventListener('load', function() {
     menuReveal.addEventListener('click', function(event) {
         console.log("menu clicked");
         menuRevealed();
+        foreground.classList.remove('initial-foreground-position');
         foreground.classList.add('animated-scroll-forwards');
         foreground.classList.remove('animated-scroll-backwards');
         foregroundButton.style.display = 'inline-block';

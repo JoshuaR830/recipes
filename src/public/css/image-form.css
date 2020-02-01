@@ -107,6 +107,11 @@ input[type="file"] {
     fill: var(--on-primary);
 }
 
+.pro-padding {
+    height: 120px;
+    width: 100%;
+}
+
 @media only screen and (min-width: 600px) {
     .form-container {
         display: inline-flex;
