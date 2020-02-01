@@ -1,0 +1,14 @@
+.below {
+    box-shadow: 0 0 16px hotpink;
+}
+.above {
+    box-shadow: 0 0 16px hotpink;
+}
+.on-drag {
+    box-shadow: 0 0 16px cyan;
+}
+.drag-and-drop {
+    padding: 20px;
+    border: 1px solid red;
+    margin: 5px;
+}
