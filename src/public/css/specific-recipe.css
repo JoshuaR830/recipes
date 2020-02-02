@@ -26,10 +26,19 @@
     color: var(--on-primary)
 }
 
+.switcher:hover {
+    cursor: pointer;
+    box-shadow: 0 0 16px var(--primary);
+}
+
 .active-switcher {
     background-color: var(--secondary);
     box-shadow: 0 0 8px var(--secondary-variant);
-    color: var(--on-secondary)
+    color: var(--on-secondary);
+}
+
+.active-switcher:hover {
+    box-shadow: 0 0 16px var(--secondary);
 }
 
 .step-row {

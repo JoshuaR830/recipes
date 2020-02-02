@@ -10,6 +10,7 @@ window.addEventListener('load', function() {
         {
             foreground.innerHTML = this.responseText;
             onRecipesLoaded();
+            switchRecipe();
         }
     };
     foregroundRequest.open("GET", `/foreground`);
