@@ -16,14 +16,15 @@
 
 .card-image {
     border-radius: 16px 16px 0 0;
-
     width: 100%;
     overflow: hidden;
     height: 194px;
+    vertical-align: middle;
 }
 
 .image {
     width: 100%;
+    min-height: 194px;
     object-fit: cover;
     overflow: hidden;
 }
@@ -72,14 +73,11 @@
     border-radius: 50%;
     z-index: 2;
     fill: var(--on-primary);
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 @media only screen and (min-width: 600px) {
-    .floating-add-recipe-button {
-        right: 56px;
-        bottom: 56px;
-    }
-
     .card {
         vertical-align: top;
         width: 344px;

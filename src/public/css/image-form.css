@@ -12,14 +12,25 @@
     width: calc(100% - 32px);
     max-width: 300px;
     min-width: 300px;
-    border-radius: 16px;
-    margin-top: 16px;
-    margin-left: 16px;
-    margin-right: 16px;
-    border: 1px solid var(--secondary);
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 32px;
+    margin-top: 16px;
 }
+
+.input-container {
+    border: 1px solid var(--secondary);
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: -28px;
+}
+
+.static-input-container {
+    border: 1px solid var(--secondary);
+    border-radius: 16px;
+    padding: 32px;
+}
+
 
 .preview-image {
     width: 100%;
@@ -43,7 +54,18 @@ input[type="file"] {
     box-sizing: border-box;
     margin-bottom: 8px;
     border-radius: 32px;
-    width: calc(100% - 60px);
+    width: calc(100%);
+}
+
+.recipe-info-text {
+    margin-top: 16px;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.recipe-info {
+    border-radius: 32px;
+    margin-top: 8px;
 }
 
 .input-detail {
@@ -51,11 +73,43 @@ input[type="file"] {
     width: 100%;
     padding: 16px;
     font-size: 24px;
+    font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     vertical-align: top;
     height: 56px;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--primary-variant);
     outline: none;
+}
+
+.recipe-description {
+    height: fit-content;
+}
+
+.text-area {
+    /* min-height: 50%; */
+    /* overflow-y: auto; */
+    margin-top: 8px;    
+    border: 1px solid var(--primary-variant);
+    background-color: var(--on-surface);
+    font-size: 24px;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    padding: 16px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    outline: none;
+    text-align: left;
+
+}
+
+.text-area:focus {
+    animation-name: inputFocus;
+    animation-delay: 0s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    box-sizing: border-box;
 }
 
 .input-detail:focus {
@@ -66,21 +120,39 @@ input[type="file"] {
     box-sizing: border-box;
 }
 
+.list-input-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    border: 1px solid var(--secondary);
+    width: 45%;
+    display: inline-block;
+    line-height: 24px;
+    padding: 12px 0 12px 0;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 32px;
+    background-color: var(--surface);
+}
+
 .input-addition {
     display: inline-block;
-    width: calc(60% - 60px);
+    width: 45%;
     font-size: 24px;
+    font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     vertical-align: top;
     height: 56px;
     border: 1px solid var(--secondary);
-    background-color: var(--primary-variant);
+    background-color: var(--surface);
     line-height: 56px;
+    margin-top: -28px;
+    box-shadow: 0 0 8px var(--secondary);
 }
 
 .input-addition:hover {
     cursor: pointer;
-    border-color: var(--secondary-variant)
+    border-color: var(--secondary-variant);
+    box-shadow: 0 0 16px var(--secondary);
 }
 
 .add-step {
@@ -113,6 +185,8 @@ input[type="file"] {
     border-radius: 50%;
     z-index: 2;
     fill: var(--on-primary);
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .pro-padding {

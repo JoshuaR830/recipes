@@ -1,8 +1,8 @@
 .below {
-    box-shadow: 0 0 16px var(--primary);
+    box-shadow: 0 0 16px var(--primary-variant);
 }
 .above {
-    box-shadow: 0 0 16px var(--primary);
+    box-shadow: 0 0 16px var(--primary-variant);
 }
 .on-drag {
     box-shadow: 0 0 16px var(--secondary);

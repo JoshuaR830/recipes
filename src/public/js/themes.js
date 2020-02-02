@@ -72,7 +72,7 @@ function lightTheme() {
 
 function darkTheme() {
     root.style.setProperty('--primary', '#540078');
-    root.style.setProperty('--primary-variant', '#9200d1');
+    root.style.setProperty('--primary-variant', '#f06292');
     root.style.setProperty('--on-primary', '#ffffff');
 
     root.style.setProperty('--secondary', '#1AC5CD');
@@ -87,7 +87,7 @@ function darkTheme() {
 
     root.style.setProperty('--error', '#b53a3a');
     root.style.setProperty('--on-error', '#ffffff');
-} 
+}
 
 function blackTheme() {
     root.style.setProperty('--primary', '#121212');
