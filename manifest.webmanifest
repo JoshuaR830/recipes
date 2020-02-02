@@ -1,0 +1,8 @@
+{
+    "name": "Recipes",
+    "description": "An easy to use recipe manager",
+    "icons": [{
+        "src": "public/images/recipes-logo.png",
+        "sizes": "fullscreen"
+    }]
+}
