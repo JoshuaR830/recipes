@@ -1,3 +1,5 @@
+var methodData = [];
+var ingredientData = [];
 var data = [];
 var dragFrom = "drag0";
 var dragTo = "drag0";
@@ -5,38 +7,72 @@ var dragTo = "drag0";
 var originalPosition;
 
 window.addEventListener('load', function(event) {
-    var addButton = document.getElementById('add-button');
-    addButton.addEventListener('click', function() {
-        data.push("");
+    var methodButton = document.getElementById('method-addition');
+    methodButton.addEventListener('click', function() {
+        methodData.push("");
         var methodStep = document.createElement('div');
-        var thisId = data.length - 1
-        methodStep.id = `drag${thisId}`;
+        var thisId = methodData.length - 1
+        methodStep.id = `drag-method${thisId}`;
         methodStep.setAttribute('draggable', true);
         methodStep.setAttribute('ondragstart', 'drag(event)');
-        methodStep.setAttribute('ondrop', 'drop(event)');
+        methodStep.setAttribute('ondrop', 'dropMethod(event)');
         methodStep.setAttribute('ondragover', 'allowDrop(event)');
         methodStep.setAttribute('ondragleave', 'noLine(event)');
         methodStep.classList.add("ingredient-item");
         methodStep.classList.add("create-step-row");
-        methodStep.innerHTML = `<input id="input${thisId}" class="recipe-step input-detail">`
-        document.getElementById('drag-and-drop-container').appendChild(methodStep);
-        document.getElementById(`input${thisId}`).addEventListener('input', function(event) {
-            id = event.currentTarget.id.replace('input', '');
-            data[id] = document.getElementById(`input${thisId}`).value;
+        methodStep.innerHTML = `<input id="input-method${thisId}" class="recipe-step input-detail">`
+        document.getElementById('method-step-container').appendChild(methodStep);
+        document.getElementById(`input-method${thisId}`).addEventListener('input', function(event) {
+            id = event.currentTarget.id.replace('input-method', '');
+            methodData[id] = document.getElementById(`input-method${thisId}`).value;
+        });
+    });
+    
+    var ingredientButton = document.getElementById('ingredient-addition');
+    ingredientButton.addEventListener('click', function() {
+        ingredientData.push("");
+        var methodStep = document.createElement('div');
+        var thisId = ingredientData.length - 1
+        methodStep.id = `drag-ingredient${thisId}`;
+        methodStep.setAttribute('draggable', true);
+        methodStep.setAttribute('ondragstart', 'drag(event)');
+        methodStep.setAttribute('ondrop', 'dropIngredient(event)');
+        methodStep.setAttribute('ondragover', 'allowDrop(event)');
+        methodStep.setAttribute('ondragleave', 'noLine(event)');
+        methodStep.classList.add("ingredient-item");
+        methodStep.classList.add("create-step-row");
+        methodStep.innerHTML = `<input id="input-ingredient${thisId}" class="recipe-step input-detail">`
+        document.getElementById('ingredient-item-container').appendChild(methodStep);
+        document.getElementById(`input-ingredient${thisId}`).addEventListener('input', function(event) {
+            id = event.currentTarget.id.replace('input-ingredient', '');
+            ingredientData[id] = document.getElementById(`input-ingredient${thisId}`).value;
         });
     });
 });
 
-function reorderData() {
-    dragFromInt = dragFrom.replace('drag', '');
-    dragToInt = dragTo.replace('drag', '');
+function reorderMethodData() {
+    dragFromInt = dragFrom.replace('drag-method', '');
+    dragToInt = dragTo.replace('drag-method', '');
 
-    var removedData = data.splice(dragFromInt, 1);
-    data.splice(dragToInt, 0, removedData);
+    var removedMethodData = methodData.splice(dragFromInt, 1);
+    methodData.splice(dragToInt, 0, removedMethodData);
 
-    for (var i = 0; i < data.length; i ++) {
-        console.log(data[i]);
-        document.getElementById(`input${i}`).value = data[i];
+    for (var i = 0; i < methodData.length; i ++) {
+        console.log(methodData[i]);
+        document.getElementById(`input-method${i}`).value = methodData[i];
+    }
+}
+
+function reorderIngredientData() {
+    dragFromInt = dragFrom.replace('drag-ingredient', '');
+    dragToInt = dragTo.replace('drag-ingredient', '');
+
+    var removedIngredientData = ingredientData.splice(dragFromInt, 1);
+    ingredientData.splice(dragToInt, 0, removedIngredientData);
+
+    for (var i = 0; i < ingredientData.length; i ++) {
+        console.log(ingredientData[i]);
+        document.getElementById(`input-ingredient${i}`).value = ingredientData[i];
     }
 }
 
@@ -54,24 +90,41 @@ function allowDrop(e) {
 }
 
 function noLine(e) {
+    console.log("No line");
     var divId = e.currentTarget.id;
     document.getElementById(divId).classList.remove('below');
     document.getElementById(divId).classList.remove('above');
 }
 
 function drag(e) {
+    console.log("Drag");
+
+    console.log(e.clientX);
     originalPosition = e.clientX;
     e.dataTransfer.setData("text", e.currentTarget.id);
     dragFrom = e.currentTarget.id;
     document.getElementById(dragFrom).classList.add('on-drag');
+    console.log("Dragging")
 }
 
-function drop(e) {
+function dropMethod(e) {
+    onDrop(e);
+    reorderMethodData();
+}
+
+function dropIngredient(e) {
+    onDrop(e);
+    reorderIngredientData();
+}
+
+function onDrop(e) {
+    console.log("On Drop");
+
     e.preventDefault();
     var divId = e.currentTarget.id;
     dragTo = e.currentTarget.id;
     document.getElementById(dragFrom).classList.remove('on-drag');
     document.getElementById(divId).classList.remove('below');
     document.getElementById(divId).classList.remove('above');
-    reorderData();
 }
+
