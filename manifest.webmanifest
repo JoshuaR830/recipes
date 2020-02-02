@@ -6,5 +6,5 @@
         "sizes": "192x192"
     }],
     "display": "fullscreen",
-    "theme-color": "#8b4cb5"
+    "theme_color": "#8b4cb5"
 }
