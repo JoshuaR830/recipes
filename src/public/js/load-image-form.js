@@ -6,6 +6,7 @@ window.addEventListener('load', function() {
         {
             foreground.innerHTML = this.responseText;
             onImageFormLoaded();
+            DragAndDrop();
         }
     };
     foregroundRequest.open("GET", `/image-form`);

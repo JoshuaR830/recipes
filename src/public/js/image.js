@@ -3,7 +3,9 @@ function onImageFormLoaded() {
     var preview = document.getElementById('preview');
 
     input.addEventListener('change', function() {
+        console.log("Image changed");
         preview.innerHTML = "";
+        console.log("Hello");
         var myImage = input.files;
         if(validType(myImage[0])) {
             console.log(myImage[0].name);
@@ -15,27 +17,27 @@ function onImageFormLoaded() {
     })
 
 
-    document.getElementById('method-addition').addEventListener('click', function() {
-        console.log("Method addition");
+    // document.getElementById('method-addition').addEventListener('click', function() {
+    //     console.log("Method addition");
 
-        var methodStep = document.createElement('div');
-        methodStep.classList.add("method-step");
-        methodStep.classList.add("create-step-row");
-        methodStep.innerHTML = `<input type="text" class="recipe-step input-detail">`
+    //     var methodStep = document.createElement('div');
+    //     methodStep.classList.add("method-step");
+    //     methodStep.classList.add("create-step-row");
+    //     methodStep.innerHTML = `<input type="text" class="recipe-step input-detail">`
 
-        document.getElementById('method-step-container').appendChild(methodStep);
-    });
+    //     document.getElementById('method-step-container').appendChild(methodStep);
+    // });
 
-    document.getElementById('ingredient-addition').addEventListener('click', function() {
-        console.log("Ingredient addition");
+    // document.getElementById('ingredient-addition').addEventListener('click', function() {
+    //     console.log("Ingredient addition");
 
-        var methodStep = document.createElement('div');
-        methodStep.classList.add("ingredient-item");
-        methodStep.classList.add("create-step-row");
-        methodStep.innerHTML = `<input type="text" class="recipe-step input-detail">`
+    //     var methodStep = document.createElement('div');
+    //     methodStep.classList.add("ingredient-item");
+    //     methodStep.classList.add("create-step-row");
+    //     methodStep.innerHTML = `<input type="text" class="recipe-step input-detail">`
 
-        document.getElementById('ingredient-item-container').appendChild(methodStep);
-    });
+    //     document.getElementById('ingredient-item-container').appendChild(methodStep);
+    // });
 
 
     document.getElementById('submit-form').addEventListener('click', function() {

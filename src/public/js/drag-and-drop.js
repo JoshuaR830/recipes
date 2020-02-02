@@ -6,7 +6,7 @@ var dragTo = "drag0";
 
 var originalPosition;
 
-function onImageFormLoaded() {
+function DragAndDrop() {
     console.log("Hi");
     var methodButton = document.getElementById('method-addition');
     methodButton.addEventListener('click', function() {
