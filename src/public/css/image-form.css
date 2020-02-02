@@ -41,21 +41,29 @@ input[type="file"] {
 .create-step-row {
     display: inline-block;
     box-sizing: border-box;
-
     margin-bottom: 8px;
-    border-radius: 0px 32px 32px 0px;
-    width: 100%;
+    border-radius: 32px;
+    width: calc(100% - 60px);
 }
 
 .input-detail {
     display: inline-block;
-    width: calc(100% - 60px);
+    width: 100%;
     padding: 16px;
     font-size: 24px;
     box-sizing: border-box;
     vertical-align: top;
     height: 56px;
     border: 1px solid var(--primary);
+    outline: none;
+}
+
+.input-detail:focus {
+    animation-name: inputFocus;
+    animation-delay: 0s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    box-sizing: border-box;
 }
 
 .input-addition {
@@ -122,3 +130,12 @@ input[type="file"] {
     }
 }
 
+@keyframes inputFocus {
+    0% {
+        box-shadow: 0 0 0 var(--secondary-variant);
+    }
+
+    100% {
+        box-shadow: 0 0 16px var(--primary-variant);
+    }
+}

@@ -6,9 +6,12 @@ var dragTo = "drag0";
 
 var originalPosition;
 
-window.addEventListener('load', function(event) {
+function onImageFormLoaded() {
+    console.log("Hi");
     var methodButton = document.getElementById('method-addition');
     methodButton.addEventListener('click', function() {
+        console.log("Hi");
+
         methodData.push("");
         var methodStep = document.createElement('div');
         var thisId = methodData.length - 1
@@ -48,7 +51,7 @@ window.addEventListener('load', function(event) {
             ingredientData[id] = document.getElementById(`input-ingredient${thisId}`).value;
         });
     });
-});
+}
 
 function reorderMethodData() {
     dragFromInt = dragFrom.replace('drag-method', '');
@@ -119,7 +122,6 @@ function dropIngredient(e) {
 
 function onDrop(e) {
     console.log("On Drop");
-
     e.preventDefault();
     var divId = e.currentTarget.id;
     dragTo = e.currentTarget.id;
