@@ -3,6 +3,8 @@
     "description": "An easy to use recipe manager",
     "icons": [{
         "src": "public/images/recipes-logo.png",
-        "sizes": "fullscreen"
-    }]
+        "sizes": "192x192"
+    }],
+    "display": "fullscreen",
+    "theme-color": "#8b4cb5"
 }
