@@ -39,6 +39,7 @@
     margin-bottom: 8px;
     border-radius: 0px 32px 32px 0px;
     width: 100%;
+    word-wrap: break-word;
 }
 
 .step-description {

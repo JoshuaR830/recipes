@@ -41,23 +41,27 @@ function onImageFormLoaded() {
 
 
     document.getElementById('submit-form').addEventListener('click', function() {
-        var name = document.getElementById('recipe-name').value;
-        var description = document.getElementById('recipe-description').value;
+        var name = document.getElementById('recipe-name').innerText;
+        var description = document.getElementById('recipe-description').innerText;
+        console.log(description);
         var myImage = input.files;
         var imageUrl = `http://flatfish.online:38120/images/${myImage[0].name}`;
 
-        var method = document.querySelectorAll('.method-step')
-        var ingredientItems = document.querySelectorAll('.ingredient-item')
+        var method = document.querySelectorAll('.method-step');
+        var ingredientItems = document.querySelectorAll('.ingredient-item');
+
+        console.log(method);
+        console.log(ingredientItems);
         
         var methodSteps = [];
         var ingredients = [];
 
         method.forEach(step => {
-            methodSteps.push(step.firstChild.value);
+            methodSteps.push(step.firstChild.innerText);
         });
 
         ingredientItems.forEach(ingredient => {
-            ingredients.push(ingredient.firstChild.value);
+            ingredients.push(ingredient.firstChild.innerText);
         });
 
         console.log(methodSteps);

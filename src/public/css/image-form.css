@@ -5,7 +5,6 @@
 .form-container {
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .form-component {
@@ -86,8 +85,6 @@ input[type="file"] {
 }
 
 .text-area {
-    /* min-height: 50%; */
-    /* overflow-y: auto; */
     margin-top: 8px;    
     border: 1px solid var(--primary-variant);
     background-color: var(--on-surface);
@@ -187,11 +184,6 @@ input[type="file"] {
     fill: var(--on-primary);
     padding: 10px;
     box-sizing: border-box;
-}
-
-.pro-padding {
-    height: 120px;
-    width: 100%;
 }
 
 @media only screen and (min-width: 600px) {

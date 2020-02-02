@@ -21,13 +21,15 @@ function DragAndDrop() {
         methodStep.setAttribute('ondrop', 'dropMethod(event)');
         methodStep.setAttribute('ondragover', 'allowDrop(event)');
         methodStep.setAttribute('ondragleave', 'noLine(event)');
-        methodStep.classList.add("ingredient-item");
+        methodStep.classList.add("method-step");
         methodStep.classList.add("create-step-row");
-        methodStep.innerHTML = `<input id="input-method${thisId}" class="recipe-step input-detail">`
+        // methodStep.innerHTML = `<input id="input-method${thisId}" class="recipe-step input-detail">`
+        methodStep.innerHTML = `<div id="input-method${thisId}" class="text-area" contenteditable></div>`
+
         document.getElementById('method-step-container').appendChild(methodStep);
         document.getElementById(`input-method${thisId}`).addEventListener('input', function(event) {
             id = event.currentTarget.id.replace('input-method', '');
-            methodData[id] = document.getElementById(`input-method${thisId}`).value;
+            methodData[id] = document.getElementById(`input-method${thisId}`).innerText;
         });
     });
     
@@ -44,11 +46,12 @@ function DragAndDrop() {
         methodStep.setAttribute('ondragleave', 'noLine(event)');
         methodStep.classList.add("ingredient-item");
         methodStep.classList.add("create-step-row");
-        methodStep.innerHTML = `<input id="input-ingredient${thisId}" class="recipe-step input-detail">`
+        // methodStep.innerHTML = `<input id="input-ingredient${thisId}" class="recipe-step input-detail">`
+        methodStep.innerHTML = `<div id="input-ingredient${thisId}" class="text-area" contenteditable></div>`
         document.getElementById('ingredient-item-container').appendChild(methodStep);
         document.getElementById(`input-ingredient${thisId}`).addEventListener('input', function(event) {
             id = event.currentTarget.id.replace('input-ingredient', '');
-            ingredientData[id] = document.getElementById(`input-ingredient${thisId}`).value;
+            ingredientData[id] = document.getElementById(`input-ingredient${thisId}`).innerText;
         });
     });
 }
@@ -62,7 +65,7 @@ function reorderMethodData() {
 
     for (var i = 0; i < methodData.length; i ++) {
         console.log(methodData[i]);
-        document.getElementById(`input-method${i}`).value = methodData[i];
+        document.getElementById(`input-method${i}`).innerText = methodData[i];
     }
 }
 
@@ -75,7 +78,7 @@ function reorderIngredientData() {
 
     for (var i = 0; i < ingredientData.length; i ++) {
         console.log(ingredientData[i]);
-        document.getElementById(`input-ingredient${i}`).value = ingredientData[i];
+        document.getElementById(`input-ingredient${i}`).innerText = ingredientData[i];
     }
 }
 
