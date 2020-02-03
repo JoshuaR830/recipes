@@ -186,6 +186,12 @@ input[type="file"] {
     box-sizing: border-box;
 }
 
+.error {
+    box-shadow: 0 0 16px var(--error);
+    background-color: var(--error);
+    color: var(--on-error);
+}
+
 @media only screen and (min-width: 600px) {
     .form-container {
         display: inline-flex;

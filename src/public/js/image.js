@@ -6,68 +6,55 @@ function onImageFormLoaded() {
         console.log("Image changed");
         preview.innerHTML = "";
         console.log("Hello");
-        var myImage = input.files;
-        if(validType(myImage[0])) {
-            console.log(myImage[0].name);
+        var myImage = input.files[0];
+        if(validType(myImage)) {
+            console.log(myImage.name);
             var imagePreview = document.createElement('img');
-            imagePreview.src = window.URL.createObjectURL(myImage[0]);
+            imagePreview.src = window.URL.createObjectURL(myImage);
             imagePreview.classList.add('preview-image');
-            preview.appendChild(imagePreview);          
+            preview.appendChild(imagePreview);
         }
     })
 
-
-    // document.getElementById('method-addition').addEventListener('click', function() {
-    //     console.log("Method addition");
-
-    //     var methodStep = document.createElement('div');
-    //     methodStep.classList.add("method-step");
-    //     methodStep.classList.add("create-step-row");
-    //     methodStep.innerHTML = `<input type="text" class="recipe-step input-detail">`
-
-    //     document.getElementById('method-step-container').appendChild(methodStep);
-    // });
-
-    // document.getElementById('ingredient-addition').addEventListener('click', function() {
-    //     console.log("Ingredient addition");
-
-    //     var methodStep = document.createElement('div');
-    //     methodStep.classList.add("ingredient-item");
-    //     methodStep.classList.add("create-step-row");
-    //     methodStep.innerHTML = `<input type="text" class="recipe-step input-detail">`
-
-    //     document.getElementById('ingredient-item-container').appendChild(methodStep);
-    // });
-
-
     document.getElementById('submit-form').addEventListener('click', function() {
+
         var name = document.getElementById('recipe-name').innerText;
         var description = document.getElementById('recipe-description').innerText;
-        console.log(description);
-        var myImage = input.files;
-        var imageUrl = `http://flatfish.online:38120/images/${myImage[0].name}`;
-
+        var myImage = input.files[0];
         var method = document.querySelectorAll('.method-step');
         var ingredientItems = document.querySelectorAll('.ingredient-item');
 
-        console.log(method);
-        console.log(ingredientItems);
-        
         var methodSteps = [];
         var ingredients = [];
 
         method.forEach(step => {
-            methodSteps.push(step.firstChild.innerText);
+            if(step.firstChild.innerText.length > 0) {
+                methodSteps.push(step.firstChild.innerText);
+            }
         });
 
         ingredientItems.forEach(ingredient => {
-            ingredients.push(ingredient.firstChild.innerText);
+            if(ingredient.firstChild.innerText.length > 0) {
+                ingredients.push(ingredient.firstChild.innerText);
+            }
         });
+    
+        var valid = validateForm(name, description, myImage, method, ingredientItems);
+        console.log(">>>>>" + valid)
+        if (valid === true) {
+            console.log(description);
+            console.log(method);
+            console.log(ingredientItems);
+            
+            var imageUrl = `http://flatfish.online:38120/images/${myImage.name}`;
+            
+            
 
-        console.log(methodSteps);
-        console.log(ingredients);
+            console.log(methodSteps);
+            console.log(ingredients);
 
-        postRecipe(name, description, imageUrl, methodSteps, ingredients);
+            postRecipe(name, description, imageUrl, methodSteps, ingredients);
+        }
     });
 
 
@@ -101,7 +88,10 @@ function onImageFormLoaded() {
         xhttp.send(json);
     }
 
-    function validType() {
+    function validType(myImage) {
+        if (myImage === undefined) {
+            return false;
+        }
         console.log("Change");
         return true;
     }
