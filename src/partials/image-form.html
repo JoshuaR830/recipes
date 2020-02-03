@@ -4,8 +4,13 @@
         
         <div class="form-component">
             <div class="static-input-container">
-                <label id="preview" class="preview-container" for="image-input"><img src="/images/placeholder.png" class="preview-image"/></label>
-                <input type="file" id="image-input" accept="image/png, image/jpeg" name="filetoupload">
+                <label id="preview" class="preview-container" for="image-input">
+                    <div style="position: relative;" class="preview-image">
+                        <img src="/images/placeholder.png" class="preview-image" style="position: absolute; left: 0;"/>
+                        <div class="preview-image" style="display: inline-block; position: absolute; left: 0; margin-top: 50px;"><svg id="image-upload-button" width="100px" height="100px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden"><path d="M0 0 24 0 24 24 0 24 0 0Z" fill="none"/><path d="M18 20 4 20 4 6 13 6 13 4 4 4C2.9 4 2 4.9 2 6L2 20C2 21.1 2.9 22 4 22L18 22C19.1 22 20 21.1 20 20L20 11 18 11 18 20ZM10.21 16.83 8.25 14.47 5.5 18 16.5 18 12.96 13.29ZM20 4 20 1 18 1 18 4 15 4C15.01 4.01 15 6 15 6L18 6 18 8.99C18.01 9 20 8.99 20 8.99L20 6 23 6 23 4 20 4Z"/></svg></div>
+                    </div>
+                </label>
+                <input type="file" id="image-input" accept="image/png, image/jpeg, .svg" name="filetoupload">
                 <label class="floating-save-recipe-button" for="submit-form"><svg xmlns="http://www.w3.org/2000/svg" class="image-size" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg></label>        
                 <button id="submit-form" type="submit" class="hide-submit-button"></button>
                 

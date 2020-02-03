@@ -5,6 +5,7 @@ function validateForm(recipeName, description, myImage, method, ingredientItems)
     nameElement = document.getElementById('recipe-name');
     descriptionElement = document.getElementById('recipe-description');
     imageElement = document.querySelector('.preview-image');
+    imagePlaceHolder = document.getElementById('image-upload-button')
     methodElement = document.getElementById('method-step-container');
     ingredientElement = document.getElementById('ingredient-item-container');
 
@@ -42,14 +43,17 @@ function validateForm(recipeName, description, myImage, method, ingredientItems)
         console.log("No image has been uploaded");
         valid = false;
         imageElement.classList.add('error');
+        imagePlaceHolder.classList.add('image-error');
     } else {
         console.log(myImage);
         if (myImage.size > 10000000) {
             console.log("File is too big to upload");
             valid = false;
             imageElement.classList.add('error');
+            imagePlaceHolder.classList.add('image-error');
         } else {
             imageElement.classList.remove('error');
+            imagePlaceHolder.classList.remove('image-error');
         }
     }
 
