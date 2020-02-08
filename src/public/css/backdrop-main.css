@@ -181,6 +181,10 @@ body, html {
         position: relative;
         text-decoration: none;
     }
+
+    .pro-padding {
+        height: 0px;
+    }
 }
 
 @keyframes animated-scroll-forwards {

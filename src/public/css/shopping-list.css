@@ -4,7 +4,6 @@
 
 .shopping-list-container {
     margin-top: 16px;
-    overflow-y: auto;
 }
 
 .shopping-item {

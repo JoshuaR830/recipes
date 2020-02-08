@@ -39,12 +39,18 @@ function saveListItem() {
     putShoppingList();
 }
 
+function deleteListItem(number) {
+    shoppingItemList.splice(number, 1);
+    ticked.splice(number, 1);
+    putShoppingList();
+}
+
 function displayListItem(listItem){
     shoppingItemList.push(listItem);
     shoppingItem = document.createElement('div');
     shoppingItem.classList.add('step-row');
     shoppingItem.innerHTML = `
-    <div id="status-container-${counter}" class="status status-complete" onclick="tickStatus(${counter})">
+    <div id="status-container-${counter}" class="status status-complete" onclick="tickStatus(${counter})" oncontextmenu="showDeleteButton(${counter})">
     <div id="status-number-${counter}" class="status-number">${counter + 1}</div>
     <div id="status-tick-${counter}" class="status-tick hidden"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
     </div>
@@ -53,6 +59,12 @@ function displayListItem(listItem){
     var list = document.getElementById('shopping-list-container');
 
     list.appendChild(shoppingItem);
+}
+
+function showDeleteButton(number) {
+    console.log("DELETE");
+    // Render a delete button
+    // When that button is clicked delete
 }
 
 function tickStatus(number) {
