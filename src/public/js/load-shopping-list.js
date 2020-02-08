@@ -15,6 +15,7 @@ function loadShoppingList() {
             if (this.readyState == 4 && this.status == 200)
             {
                 listContainer.innerHTML = this.responseText;
+                OnShoppingListLoaded();
             }
         };
         foregroundRequest.open("GET", `/shopping-list-content`);

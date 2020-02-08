@@ -69,16 +69,18 @@ function setupMethod(method) {
     var html = "";
     var counter = 0;
     method.forEach(function(step) {
-        console.log(step);
-        counter ++;
-        html += `
-            <div class="step-row">
-                <div id="status-container-${counter}" class="status status-complete">
-                    <div id="status-number-${counter}" class="status-number">${counter}</div>
-                    <div id="status-tick-${counter}" class="status-tick hidden"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
-                </div>
-                <div id="step-description-${counter}" class="step-description">${step}</div>
-            </div>`;
+        if(step.length > 0) {
+            console.log(step);
+            counter ++;
+            html += `
+                <div class="step-row">
+                    <div id="status-container-${counter}" class="status status-complete">
+                        <div id="status-number-${counter}" class="status-number">${counter}</div>
+                        <div id="status-tick-${counter}" class="status-tick hidden"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
+                    </div>
+                    <div id="step-description-${counter}" class="step-description">${step}</div>
+                </div>`;
+        }
     });
     stepContainer.innerHTML = html;
 
@@ -105,16 +107,18 @@ function setupIngredients(ingredients) {
     var html = "";
     var counter = 0;
     ingredients.forEach(function(ingredient) {
-        counter ++;
-        console.log(ingredient);
-        html += `
-        <div class="step-row">
-            <div id="status-container-${counter}" class="status status-complete">
-                <div id="status-number-${counter}" class="status-number">${counter}</div>
-                <div id="status-tick-${counter}" class="status-tick hidden"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
-            </div>
-            <div id="step-description-${counter}" class="step-description">${ingredient}</div>
-        </div>`;
+        if(ingredient.length > 0) {
+            counter ++;
+            console.log(ingredient);
+            html += `
+            <div class="step-row">
+                <div id="status-container-${counter}" class="status status-complete">
+                    <div id="status-number-${counter}" class="status-number">${counter}</div>
+                    <div id="status-tick-${counter}" class="status-tick hidden"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
+                </div>
+                <div id="step-description-${counter}" class="step-description">${ingredient}</div>
+            </div>`;
+        }
     });
     ingredientContainer.innerHTML = html;
 }
