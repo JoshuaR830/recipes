@@ -17,7 +17,7 @@ function switchRecipe() {
         method.classList.remove('active-switcher');
         ingredients.classList.add('active-switcher');
         stepContainer.style.display = "none";
-    ingredientContainer.style.display = "block";
+        ingredientContainer.style.display = "block";
     });
 }
 

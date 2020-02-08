@@ -98,7 +98,6 @@ input[type="file"] {
     flex-grow: 1;
     outline: none;
     text-align: left;
-
 }
 
 .text-area:focus {
