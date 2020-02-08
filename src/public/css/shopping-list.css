@@ -1,3 +1,7 @@
+.recipe-container {
+    width: 100%;
+}
+
 .shopping-item {
     background-color: red;
     height: 56px;

@@ -2,7 +2,6 @@ shoppingListHtml = "";
 counter = 0;
 
 function addListItem() {
-
     var add = document.getElementById('add-shopping-item');
     var save = document.getElementById('save-shopping-item');
     
@@ -11,8 +10,6 @@ function addListItem() {
 
     var input = document.getElementById('shopping-input-container');
     input.style.display = 'inline-block';
-
-    list.appendChild(shoppingItem);
 }
 
 function saveListItem() {
@@ -23,9 +20,6 @@ function saveListItem() {
     document.getElementById('shopping-input').value = "";
 
     if (ingredient.length > 0) {
-
-    
-
         add.style.display = 'inline-block';
         save.style.display = 'none';
         shoppingItem = document.createElement('div');

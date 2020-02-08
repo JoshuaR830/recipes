@@ -5,14 +5,29 @@ window.addEventListener('popstate', function(e) {
     console.log(path);
     var allRecipes = document.getElementById('recipe-selector-container');
     var recipe = document.getElementById('recipe-container');
+    var shoppingList = document.getElementById('shopping-list-container');
 
-    if (path == '/') {
+    if (path === '/') {
         recipe.style.display = "none";
-        allRecipes.style.display = 'inline-block'
+        shoppingList.style.display = "none";
+        allRecipes.style.display = 'inline-block';
+        subtitle.innerText = "Recipes";
+
+    } else if (path === '/shopping-list')
+    {
+        recipe.style.display = "none";
+        allRecipes.style.display = 'none';
+
+        title.innerText = "Shopping List";
+        subtitle.innerText = "Add the items you need";
+
+        shoppingList.style.display = "inline-block";
+        console.log('On shopping list');
     }
     else {
         allRecipes.style.display = 'none'
         recipe.style.display = "inline-block";
+        shoppingList.style.display = "none";
     }
 });
 
@@ -42,6 +57,7 @@ function renderSpecificRecipe(details) {
     setupMethod(details.MethodSteps);
     setupIngredients(details.Ingredients);
     console.log("Recipe displayed");
+    subtitle.innerText = details.Name;
 }
 
 function setupMethod(method) {
@@ -149,11 +165,11 @@ function renderRecipes(recipes) {
     if(location.pathname.includes('/recipes/')) {
         allRecipes.style.display = 'none';
         getRecipeById(location.pathname.split("/")[2]);
-    } else {
+    } else if (location.pathname.includes('/shopping-list')) {
+        loadShoppingList();
+    }else {
         allRecipes.style.display = 'inline-block';
     }
-
-    
 }
 
 // Gets all available recipes and returns an array of id's

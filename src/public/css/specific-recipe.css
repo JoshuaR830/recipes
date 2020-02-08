@@ -75,6 +75,7 @@
     border-radius: 50%;
     color: var(--on-secondary);
     font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
 .status-incomplete {
