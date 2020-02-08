@@ -87,7 +87,7 @@ input[type="file"] {
 .text-area {
     margin-top: 8px;    
     border: 1px solid var(--primary-variant);
-    background-color: var(--on-surface);
+    background-color: #ffffff;
     font-size: 24px;
     color: #000000;
     font-family: 'Roboto', sans-serif;
@@ -184,6 +184,16 @@ input[type="file"] {
     fill: var(--on-primary);
     padding: 10px;
     box-sizing: border-box;
+}
+
+.error {
+    box-shadow: 0 0 16px var(--error);
+    background-color: var(--error);
+    color: var(--on-error);
+}
+
+.image-error {
+    fill: var(--error);
 }
 
 @media only screen and (min-width: 600px) {
