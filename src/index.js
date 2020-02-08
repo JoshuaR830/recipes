@@ -14,6 +14,10 @@ app.get('/recipes/:uid', function(req, res, next) {
     res.sendFile(`${__dirname}/backdrop.html`);
 });
 
+app.get('/shopping-list', function(req, res) {
+    res.sendFile(`${__dirname}/backdrop.html`);
+})
+
 app.get('/drag-and-drop', function(req, res) {
     console.log(req.params.uid);
     res.sendFile(`${__dirname}/drag-and-drop.html`);
@@ -47,6 +51,11 @@ app.get('/image-form', function(req, res) {
 app.get('/image-upload', function(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     res.sendFile(`${__dirname}/image.html`);
+});
+
+app.get('/shopping-list-content', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.sendFile(`${__dirname}/partials/shopping-list.html`);
 });
 
 app.post('/fileupload', function(req, res) {

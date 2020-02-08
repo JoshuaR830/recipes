@@ -52,6 +52,20 @@ body, html {
     font-family: 'Roboto', sans-serif;
 }
 
+.floating-button {
+    background-color: var(--primary-variant);
+    width: 56px;
+    height: 56px;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    border-radius: 50%;
+    z-index: 2;
+    fill: var(--on-primary);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 .subtitle-container {
     background-color: var(--surface);
     color: var(--on-surface);

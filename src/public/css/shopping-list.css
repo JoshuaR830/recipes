@@ -1,0 +1,41 @@
+.recipe-container {
+    width: 100%;
+}
+
+.shopping-item {
+    background-color: red;
+    height: 56px;
+    width: calc(100% - 88px - 16px);
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    border-radius: 32px 0 0 32px;
+}
+
+.shopping-input {
+    height: 56px;
+    width: 100%;
+    border-radius: 32px 0 0 32px;
+    font-size: 24px;
+    padding-left: 16px;
+    outline: none;
+    border: 1px solid var(--primary);
+    box-sizing: border-box;
+}
+
+.shopping-description {
+    display: inline-block;
+    width: calc(100% - 70px);
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 0px 32px 32px 0px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 1px solid var(--secondary);
+    font-family: 'Roboto', sans-serif;
+}
+
+.shopping-list-reveal {
+    float: right;
+}
+

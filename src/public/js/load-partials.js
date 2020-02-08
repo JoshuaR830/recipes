@@ -49,16 +49,5 @@ window.addEventListener('load', function() {
         }
     };
     titleRequest.open("GET", `/title`);
-    titleRequest.send();
-
-
-
-    
-
-    
-
-    
-
-    
-    
+    titleRequest.send(); 
 });
