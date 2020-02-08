@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="application-name" content="Recipes">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/backdrop-variables.css">
+        <link rel="stylesheet" type="text/css" href="../css/backdrop-main.css">
+        <link rel="stylesheet" type="text/css" href="../css/specific-recipe.css">
+        <link rel="stylesheet" type="text/css" href="../css/recipe-selector.css">
+        <link rel="stylesheet" type="text/css" href="../css/shopping-list.css">
+        <script src="../js/shopping-list.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="icon" href="/images/shopping-list.png">
+    </head>
+
+    <body>
+        <div class="container">
+            <div id="shopping-list-container">
+        
+            </div>
+            <div class="button">
+                <div id="add-shopping-item" class="add-list-item floating-button" onclick="addListItem()"><svg xmlns="http://www.w3.org/2000/svg" class="image-size" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></div>
+                <div id="save-shopping-item" class="add-list-item floating-button hidden" onclick="saveListItem()"><svg xmlns="http://www.w3.org/2000/svg" class="image-size" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg></div>
+                <div id="shopping-input-container" class="shopping-item hidden">
+                    <input id="shopping-input" class="shopping-input">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
