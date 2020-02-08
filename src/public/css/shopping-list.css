@@ -2,8 +2,11 @@
     width: 100%;
 }
 
+.shopping-list-container {
+    margin-top: 16px;
+}
+
 .shopping-item {
-    background-color: red;
     height: 56px;
     width: calc(100% - 88px - 16px);
     position: fixed;

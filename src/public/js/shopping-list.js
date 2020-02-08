@@ -1,6 +1,7 @@
 shoppingListHtml = "";
 counter = 0;
 var shoppingItemList = [];
+var ticked = [];
 
 function OnShoppingListLoaded() {
     shoppingItemList = [];
@@ -34,6 +35,7 @@ function saveListItem() {
 
     var input = document.getElementById('shopping-input-container');
     input.style.display = 'none';
+    ticked.push(0);
     putShoppingList();
 }
 
@@ -56,9 +58,12 @@ function displayListItem(listItem){
 function tickStatus(number) {
     if (document.getElementById(`status-container-${number}`).classList.contains('ticked')) {
         untick(number);
+        ticked[number] = 0;
     } else {
         tick(number)
+        ticked[number] = 1;
     }
+    putShoppingList();
 }
 
 function tick(number) {
@@ -77,12 +82,25 @@ function untick(number){
 }
 
 function renderShoppingList(listData) {
-    console.log("UserId:", listData.UserId);
-    console.log("Data:", listData.ShoppingList);
+    console.log("UserId: ", listData.UserId);
+    console.log("Data: ", listData.ShoppingList);
+    ticked = listData.Ticked;
+    console.log("Ticked: ", ticked)
     for (var item of listData.ShoppingList) {
         console.log(item);
         if(item.length > 0) {
             displayListItem(item);
+        }
+    }
+
+    console.log("Ticked", listData.Ticked);
+
+    for (var i = 0; i < listData.Ticked.length; i++)
+    {
+        if (listData.Ticked[i] === 0) {
+            untick(i)
+        } else {
+            tick(i)
         }
     }
 }
@@ -110,6 +128,8 @@ function putShoppingList() {
     var data = {};
     data.userId = "b645d320-ae7f-42b6-acf6-5af52693ffa6";
     data.shoppingList = shoppingItemList;
+    console.log(ticked);
+    data.ticked = ticked;
 
     var json = JSON.stringify(data);
 
