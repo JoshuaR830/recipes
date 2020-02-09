@@ -2,6 +2,7 @@ function loadShoppingList() {
     var foreground = document.getElementById('foreground-content-container');
     var listContainer = document.getElementById('shopping-list-container');
     var content = document.getElementById("add-shopping-item");
+    var loginContainer = document.getElementById('login-container');
 
     if(!document.contains(foreground)){
         console.log("No content");
@@ -31,9 +32,11 @@ function loadShoppingList() {
     }
     recipe.style.display = "none";
     allRecipes.style.display = 'none';
+    loginContainer.style.display = "none";
 
     title.innerText = "Shopping List";
     subtitle.innerText = "Add the items you need";
 
     shoppingList.style.display = "inline-block";
+
 }

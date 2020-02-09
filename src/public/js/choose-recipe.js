@@ -6,26 +6,39 @@ window.addEventListener('popstate', function(e) {
     var allRecipes = document.getElementById('recipe-selector-container');
     var recipe = document.getElementById('recipe-container');
     var shoppingList = document.getElementById('shopping-list-container');
+    var loginContainer = document.getElementById('login-container');
+
 
     if (path === '/') {
         recipe.style.display = "none";
         shoppingList.style.display = "none";
+        loginContainer.style.display = "none";
         allRecipes.style.display = 'inline-block';
         subtitle.innerText = "Recipes";
 
-    } else if (path === '/shopping-list')
-    {
+    } else if (path === '/shopping-list'){
         recipe.style.display = "none";
         allRecipes.style.display = 'none';
+        loginContainer.style.display = "none";
 
         title.innerText = "Shopping List";
         subtitle.innerText = "Add the items you need";
 
         shoppingList.style.display = "inline-block";
         console.log('On shopping list');
-    }
-    else {
+    } else if (path === '/login'){
+        recipe.style.display = "none";
+        allRecipes.style.display = 'none';
+        shoppingList.style.display = "none";
+        
+        title.innerText = "Recipe";
+        subtitle.innerText = "Log into your account";
+        
+        loginContainer.style.display = "inline-block";
+        console.log('On shopping list');
+    } else {
         allRecipes.style.display = 'none'
+        loginContainer.style.display = "none";
         recipe.style.display = "inline-block";
         shoppingList.style.display = "none";
     }
@@ -33,6 +46,8 @@ window.addEventListener('popstate', function(e) {
 
 function onRecipesLoaded() {
     console.log("Hello");
+    var loginContainer = document.getElementById('login-container');
+    loginContainer.style.display = "none";
 
     var button = document.getElementById('add-recipe-button');
     button.addEventListener('click', function() {
@@ -171,7 +186,9 @@ function renderRecipes(recipes) {
         getRecipeById(location.pathname.split("/")[2]);
     } else if (location.pathname.includes('/shopping-list')) {
         loadShoppingList();
-    }else {
+    } else if (location.pathname.includes('/login')) {
+        loadLogin();
+    } else {
         allRecipes.style.display = 'inline-block';
     }
 }
