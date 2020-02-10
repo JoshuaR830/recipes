@@ -194,7 +194,10 @@ function validUserName(data) {
     var accountImage = document.createElement('img');
     accountImage.src = data.ImageUrl;
     accountImage.classList.add('account-image');
+    loggedIn.innerHTML = "";
     loggedIn.appendChild(accountImage);
+
+    window.history.back();
 
     console.log("Logged in successfully");
 }
