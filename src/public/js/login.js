@@ -132,11 +132,14 @@ function attemptLogin(userName, password) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
-            if(this.responseText == "false") {
+            console.log("It's real");
+            var json = JSON.parse(this.responseText);
+            if(json.Status === false) {
                 console.log("Hello");
                 invalidUserName();
             } else {
-                validUserName()
+                console.log("Success");
+                validUserName(json);
             }
         }
     }
@@ -159,11 +162,13 @@ function attemptRegistration(userName, password) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
+            console.log("It's real");
             if(this.responseText == "false") {
-                console.log("Hello");
+                console.log("Fail");
                 invalidUserName();
             } else {
-                validUserName()
+                console.log("Success");
+                validUserName();
             }
         }
     }
@@ -175,7 +180,21 @@ function invalidUserName() {
     nameInput.classList.add("error");
 }
 
-function validUserName() {
+function validUserName(data) {
+    console.log(data.UserName);
+    console.log(data.UserId);
+    console.log(data.ImageUrl);
+
     var nameInput = document.getElementById('name-input');
     nameInput.classList.remove("error");
+    document.getElementById('login-icon').style.display = 'none';
+    var loggedIn = document.getElementById('logged-in-icon');
+    loggedIn.style.display = 'block';
+
+    var accountImage = document.createElement('img');
+    accountImage.src = data.ImageUrl;
+    accountImage.classList.add('account-image');
+    loggedIn.appendChild(accountImage);
+
+    console.log("Logged in successfully");
 }

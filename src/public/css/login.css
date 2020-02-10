@@ -71,11 +71,31 @@
     color: var(--on-error);
 }
 
+.login-icon {
+    display: block;
+}
+
+.logged-in-icon {
+    display: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-variant);
+}
+
+.account-image {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    overflow: none;
+    border-radius: 50%;
+}
+
 .go-to {
     margin-top: 32px;
     background-color: transparent;
     border: none;
-    padding: 4px;
+    padding: 12px;
     border-radius: 32px;
     color: var(--on-surface);
     outline: none;
