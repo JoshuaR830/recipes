@@ -74,15 +74,6 @@ function OnLoginLoaded() {
     })
 }
 
-/* <div id="login-buttons-container">
-<button id="login-button" class="login-button">Login</button>
-<button id="go-to-register">Register</button>
-</div>
-<div id="register-buttons-container">
-<button id="register-button" class="login-button">Register</button>
-<button id="go-to-login">Login</button>
-</div> */
-
 function login() {
     console.log("Login attempted");
     name = document.getElementById('name-input').value;
@@ -276,6 +267,9 @@ function hasImage(loginImage) {
 }
 
 function validUserName(data) {
+    console.log("Data");
+    console.log(data);
+    document.cookie = `recipeUserId=${data.UserId}`;
     var nameInput = document.getElementById('name-input');
     nameInput.classList.remove("error");
     document.getElementById('login-icon').style.display = 'none';
