@@ -97,6 +97,19 @@ function setupRegistration() {
 function register() {
     
     console.log("Login attempted");
+    var form = document.forms['profile-image-form'];
+    var input = document.getElementById('image-input');
+    var loginImage = input.files[0];
+    var imageUrl = 'http://flatfish.online:38120/images/ProfilePlaceholder.png';
+    if (hasImage(loginImage)) {
+        imageUrl = `http://flatfish.online:38120/images/${loginImage.name}`;
+        console.log("Done");
+        form.submit();
+    } 
+    
+    console.log(imageUrl);
+
+
     name = document.getElementById('name-input').value;
     password = document.getElementById('password-input');
     passwordConfirmation = document.getElementById('confirm-password-input');
@@ -108,7 +121,7 @@ function register() {
     if(password.value === passwordConfirmation.value) {
         password.classList.remove('error');
         passwordConfirmation.classList.remove('error');
-        attemptRegistration(name, password.value);
+        attemptRegistration(name, password.value, imageUrl);
     } else {
         console.log('no match');
         password.classList.add('error');
@@ -146,12 +159,13 @@ function attemptLogin(userName, password) {
     xhttp.send(json);
 }
 
-function attemptRegistration(userName, password) {
+function attemptRegistration(userName, password, imageUrl) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", `http://${hostname}/api/register`);
     var data = {};
     data.userName = userName;
     data.password = password;
+    data.imageUrl = imageUrl;
 
     var json = JSON.stringify(data);
 
@@ -163,12 +177,11 @@ function attemptRegistration(userName, password) {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             console.log("It's real");
-            if(this.responseText == "false") {
-                console.log("Fail");
+            var data = JSON.parse(this.response);
+            if(data.Status == false) {
                 invalidUserName();
             } else {
-                console.log("Success");
-                validUserName();
+                validUserName(data);
             }
         }
     }
@@ -180,11 +193,24 @@ function invalidUserName() {
     nameInput.classList.add("error");
 }
 
-function validUserName(data) {
-    console.log(data.UserName);
-    console.log(data.UserId);
-    console.log(data.ImageUrl);
+function hasImage(loginImage) {
+    valid = true;
 
+    if (loginImage === undefined) {
+        console.log("No image has been uploaded");
+        valid = false;
+    } else {
+        console.log(loginImage);
+        if (loginImage.size > 10000000) {
+            console.log("File is too big to upload");
+            valid = false;
+        }
+    }
+    console.log("Form submitted");
+    return valid;
+}
+
+function validUserName(data) {
     var nameInput = document.getElementById('name-input');
     nameInput.classList.remove("error");
     document.getElementById('login-icon').style.display = 'none';

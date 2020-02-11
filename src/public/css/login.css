@@ -109,6 +109,23 @@
     animation-fill-mode: forwards;
 }
 
+.profile-image-preview {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.file-uploader {
+    display: none;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 @media only screen and (min-width: 600px) {
     .login-container {
         width: 600px;
