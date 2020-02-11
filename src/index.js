@@ -82,7 +82,7 @@ app.post('/fileupload', function(req, res) {
     
                 fs.writeFile(permPath, data, function(err) {
                     if (err) throw err;
-                    res.redirect('/');
+                    // res.redirect('/');
                     console.log("File written");
                     res.end();
                 });

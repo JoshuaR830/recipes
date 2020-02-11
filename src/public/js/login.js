@@ -92,22 +92,34 @@ function setupRegistration() {
     registrationContainer.style.display = "block";
     loginButtonsContainer = document.getElementById('login-buttons-container');
     loginButtonsContainer.style.display = "none";
+    var upload = document.getElementById('image-input');
+    upload.addEventListener('change', changeImage);
+}
+
+function changeImage() {
+    var upload = document.getElementById('image-input');
+
+    var imagePreview = document.getElementById('profile-image');
+    var myImage = upload.files[0];
+    console.log("Hello");
+    if(validType(myImage)) {
+        var src = window.URL.createObjectURL(myImage);
+        imagePreview.src = src;
+        console.log(src);
+    }
+}
+
+function validType(myImage) {
+    if (myImage === undefined) {
+        return false;
+    }
+    console.log("Change");
+    return true;
 }
 
 function register() {
     
     console.log("Login attempted");
-    var form = document.forms['profile-image-form'];
-    var input = document.getElementById('image-input');
-    var loginImage = input.files[0];
-    var imageUrl = 'http://flatfish.online:38120/images/ProfilePlaceholder.png';
-    if (hasImage(loginImage)) {
-        imageUrl = `http://flatfish.online:38120/images/${loginImage.name}`;
-        console.log("Done");
-        form.submit();
-    } 
-    
-    console.log(imageUrl);
 
 
     name = document.getElementById('name-input').value;
@@ -121,7 +133,7 @@ function register() {
     if(password.value === passwordConfirmation.value) {
         password.classList.remove('error');
         passwordConfirmation.classList.remove('error');
-        attemptRegistration(name, password.value, imageUrl);
+        attemptRegistration(name, password.value);
     } else {
         console.log('no match');
         password.classList.add('error');
@@ -160,6 +172,17 @@ function attemptLogin(userName, password) {
 }
 
 function attemptRegistration(userName, password, imageUrl) {
+
+    var input = document.getElementById('image-input');
+    var form = document.forms['profile-image-form'];
+    var imageUrl = 'http://flatfish.online:38120/images/ProfilePlaceholder.png';
+    var loginImage = input.files[0];
+    if (hasImage(loginImage)) {
+        imageUrl = `http://flatfish.online:38120/images/${loginImage.name}`;
+        console.log("Done");
+        form.submit();
+    }
+
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", `http://${hostname}/api/register`);
     var data = {};
