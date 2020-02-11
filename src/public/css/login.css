@@ -4,7 +4,9 @@
     border-radius: 16px;
     color: var(--on-surface);
     border: 1px solid var(--secondary);
-    max-width: 300px;
+    box-sizing: border-box;
+    max-width: 350px;
+    width: calc(100% - 32px);
 }
 
 .login-subtitle {

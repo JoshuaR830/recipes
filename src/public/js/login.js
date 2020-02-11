@@ -1,3 +1,5 @@
+var isLogin = false;
+
 function loadLogin() {
     var foreground = document.getElementById('foreground-content-container');
     var loginContainer = document.getElementById('login-container');
@@ -43,6 +45,7 @@ function loadLogin() {
 }
 
 function OnLoginLoaded() {
+    isLogin = true;
     registerButtons = document.getElementById('register-buttons-container');
     registerButtons.style.display = "none";
     loginButtons = document.getElementById('login-buttons-container');
@@ -58,7 +61,17 @@ function OnLoginLoaded() {
     
     goToLogin.addEventListener('click', setupLogin);
     goToRegister.addEventListener('click', setupRegistration);
+    document.getElementById('add-image-button').style.display = 'none';
+    document.getElementById('image-input').disabled = true;
 
+    nameInput = document.getElementById('name-input');
+
+    nameInput.addEventListener('blur', function(name) {
+        if(isLogin)
+        {
+            getImageRequest(nameInput.value);
+        }
+    })
 }
 
 /* <div id="login-buttons-container">
@@ -73,6 +86,7 @@ function OnLoginLoaded() {
 function login() {
     console.log("Login attempted");
     name = document.getElementById('name-input').value;
+
     password = document.getElementById('password-input').value;
 
     console.log(name);
@@ -81,19 +95,28 @@ function login() {
 }
 
 function setupLogin() {
+    isLogin = true;
     registrationContainer = document.getElementById('register-buttons-container');
     registrationContainer.style.display = "none";
     loginButtonsContainer = document.getElementById('login-buttons-container');
     loginButtonsContainer.style.display = "block";
+    document.getElementById('add-image-button').style.display = 'none';
+    document.getElementById('image-input').disabled = true;
 }
 
 function setupRegistration() {
+    isLogin = false;
     registrationContainer = document.getElementById('register-buttons-container');
     registrationContainer.style.display = "block";
     loginButtonsContainer = document.getElementById('login-buttons-container');
     loginButtonsContainer.style.display = "none";
     var upload = document.getElementById('image-input');
+    document.getElementById('add-image-button').style.display = 'inline-block';
+    document.getElementById('image-input').disabled = false;
+
     upload.addEventListener('change', changeImage);
+
+    document.getElementById('profile-image').src = "/images/ProfilePlaceholder.png";
 }
 
 function changeImage() {
@@ -139,6 +162,25 @@ function register() {
         password.classList.add('error');
         passwordConfirmation.classList.add('error');
     }
+}
+
+function getImageRequest(name) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", `http://${hostname}/api/login/${name}`);
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+            var accountImage = document.getElementById('profile-image');
+            if (data.ImageUrl != null) {
+                accountImage.src = data.ImageUrl;
+            } else {
+                accountImage.src = "/images/ProfilePlaceholder.png";
+            }
+        }
+    }
+    xhttp.send();
 }
 
 function attemptLogin(userName, password) {
