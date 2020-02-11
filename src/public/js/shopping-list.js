@@ -129,16 +129,19 @@ function getShoppingList() {
         }
     };
 
-    xhttp.open("GET", `http://${hostname}/api/shoppingList`);
+    var id = getCookie("recipeUserId");
+    xhttp.open("GET", `http://${hostname}/api/shoppingList/${id}`);
     xhttp.send();
 }
 
 function putShoppingList() {
     var xhttp = new XMLHttpRequest();
     // Needs an ID - used for updating
-    xhttp.open("PUT", `http://${hostname}/api/shoppingList/b645d320-ae7f-42b6-acf6-5af52693ffa6`);
+    var id = getCookie("recipeUserId");
+
+    xhttp.open("PUT", `http://${hostname}/api/shoppingList/${id}`);
     var data = {};
-    data.userId = "b645d320-ae7f-42b6-acf6-5af52693ffa6";
+    data.userId = id;
     data.shoppingList = shoppingItemList;
     console.log(ticked);
     data.ticked = ticked;

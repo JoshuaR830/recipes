@@ -282,6 +282,8 @@ function validUserName(data) {
     loggedIn.innerHTML = "";
     loggedIn.appendChild(accountImage);
 
+    document.getElementById('foreground').classList.add("logged-in");
+
     window.history.back();
 
     console.log("Logged in successfully");

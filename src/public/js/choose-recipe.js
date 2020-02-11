@@ -8,6 +8,12 @@ window.addEventListener('popstate', function(e) {
     var shoppingList = document.getElementById('shopping-list-container');
     var loginContainer = document.getElementById('login-container');
 
+    if(document.getElementById('foreground').classList.contains("logged-in"))
+    {
+        console.log("reload");
+        window.location.reload();
+        document.getElementById('foreground').classList.remove("logged-in");
+    }   
 
     if (path === '/') {
         recipe.style.display = "none";
