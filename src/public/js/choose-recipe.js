@@ -1,5 +1,9 @@
 var hostname = 'flatfish.online:35001';
 
+window.addEventListener('load', function() {
+    getUserData();
+})
+
 window.addEventListener('popstate', function(e) {
     path = location.pathname;
     console.log(path);

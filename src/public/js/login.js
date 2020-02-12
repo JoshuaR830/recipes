@@ -269,9 +269,19 @@ function hasImage(loginImage) {
 function validUserName(data) {
     console.log("Data");
     console.log(data);
-    document.cookie = `recipeUserId=${data.UserId}`;
+    document.cookie = `recipeUserId=${data.Id}`;
+
     var nameInput = document.getElementById('name-input');
     nameInput.classList.remove("error");
+
+    window.history.back();
+    document.getElementById('foreground').classList.add("logged-in");
+
+    console.log("Logged in successfully");
+}
+
+
+function displayUserContent(data) {
     document.getElementById('login-icon').style.display = 'none';
     var loggedIn = document.getElementById('logged-in-icon');
     loggedIn.style.display = 'block';
@@ -281,10 +291,31 @@ function validUserName(data) {
     accountImage.classList.add('account-image');
     loggedIn.innerHTML = "";
     loggedIn.appendChild(accountImage);
+    console.log("User data loaded");
+} 
 
-    document.getElementById('foreground').classList.add("logged-in");
 
-    window.history.back();
+function getUserData() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", `http://${hostname}/api/userdata`);
+    var data = {};
+    data.id = getCookie("recipeUserId");
 
-    console.log("Logged in successfully");
+    var json = JSON.stringify(data);
+
+    console.log(json);
+
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+
+    xhttp.onreadystatechange = function() {
+        console.log("Request made");
+        if (this.readyState == 4 && this.status == 200) {
+            var json = JSON.parse(this.responseText);
+            if(json.Status === true) {
+                console.log("Yippeee")
+                displayUserContent(json);
+            }
+        }
+    }
+    xhttp.send(json);
 }
