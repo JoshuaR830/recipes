@@ -5,7 +5,7 @@ var ticked = [];
 
 function OnShoppingListLoaded() {
     shoppingItemList = [];
-    getShoppingList()
+    getShoppingList();
 }
 
 function addListItem() {
@@ -29,6 +29,8 @@ function saveListItem() {
     add.style.display = 'inline-block';
     save.style.display = 'none';
     document.getElementById('shopping-list-item-container').classList.remove('delete');
+    document.getElementById('show-delete').style.display = "inline-block";
+    document.getElementById('hide-delete').style.display = "none";
     if (listItem.length > 0) {
         displayListItem(listItem);
     }
@@ -93,8 +95,12 @@ function toggleItemDeletion() {
     var list = document.getElementById('shopping-list-item-container');
     if (list.classList.contains('delete'))
     {
+        document.getElementById('show-delete').style.display = "inline-block";
+        document.getElementById('hide-delete').style.display = "none";
         list.classList.remove('delete');
     } else {
+        document.getElementById('show-delete').style.display = "none";
+        document.getElementById('hide-delete').style.display = "inline-block";
         list.classList.add('delete');
     }
 }
