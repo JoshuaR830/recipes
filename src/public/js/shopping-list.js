@@ -28,7 +28,7 @@ function saveListItem() {
     document.getElementById('shopping-input').value = "";
     add.style.display = 'inline-block';
     save.style.display = 'none';
-    
+    document.getElementById('shopping-list-item-container').classList.remove('delete');
     if (listItem.length > 0) {
         displayListItem(listItem);
     }
@@ -40,6 +40,7 @@ function saveListItem() {
 }
 
 function deleteListItem(number) {
+    console.log("Delete");
     shoppingItemList.splice(number, 1);
     ticked.splice(number, 1);
     putShoppingList();
@@ -49,14 +50,18 @@ function displayListItem(listItem){
     shoppingItemList.push(listItem);
     shoppingItem = document.createElement('div');
     shoppingItem.classList.add('step-row');
+    var num = counter;
+    shoppingItem.addEventListener('click', function() {
+        tickStatus(num);
+    });
     shoppingItem.innerHTML = `
-    <div id="status-container-${counter}" class="status status-complete" onclick="tickStatus(${counter})" oncontextmenu="showDeleteButton(${counter})">
+    <div id="status-container-${counter}" class="status status-complete" oncontextmenu="showDeleteButton(${counter})">
     <div id="status-number-${counter}" class="status-number">${counter + 1}</div>
     <div id="status-tick-${counter}" class="status-tick hidden"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
     </div>
     <div id="list-item-${counter}" class="shopping-description">${listItem}</div>`
     counter ++;
-    var list = document.getElementById('shopping-list-container');
+    var list = document.getElementById('shopping-list-item-container');
 
     list.appendChild(shoppingItem);
 }
@@ -68,7 +73,13 @@ function showDeleteButton(number) {
 }
 
 function tickStatus(number) {
-    if (document.getElementById(`status-container-${number}`).classList.contains('ticked')) {
+    console.log(number);
+    var list = document.getElementById('shopping-list-item-container');
+
+    if (list.classList.contains('delete')) {
+        deleteListItem(number);
+    }
+    else if (document.getElementById(`status-container-${number}`).classList.contains('ticked')) {
         untick(number);
         ticked[number] = 0;
     } else {
@@ -76,6 +87,16 @@ function tickStatus(number) {
         ticked[number] = 1;
     }
     putShoppingList();
+}
+
+function toggleItemDeletion() {
+    var list = document.getElementById('shopping-list-item-container');
+    if (list.classList.contains('delete'))
+    {
+        list.classList.remove('delete');
+    } else {
+        list.classList.add('delete');
+    }
 }
 
 function tick(number) {
@@ -98,6 +119,10 @@ function renderShoppingList(listData) {
     console.log("Data: ", listData.ShoppingList);
     ticked = listData.Ticked;
     console.log("Ticked: ", ticked)
+    var list = document.getElementById('shopping-list-item-container');
+    list.innerHTML = "";
+    shoppingItemList = [];
+    counter = 0;
     for (var item of listData.ShoppingList) {
         console.log(item);
         if(item.length > 0) {
@@ -153,6 +178,10 @@ function putShoppingList() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log("Success");
+            if (document.getElementById('shopping-list-item-container').classList.contains('delete'))
+            {
+                getShoppingList();
+            }
         }
     }
     xhttp.send(json);
