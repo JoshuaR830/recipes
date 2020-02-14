@@ -1,4 +1,10 @@
 function loadShoppingList() {
+    document.getElementById('shopping-list-reveal').style.display = 'none';
+    document.getElementById('recipe-list-reveal').style.display = 'inline-block';
+    document.getElementById('delete-shopping-item').style.display = 'inline-block';
+    document.getElementById('calendar-reveal').style.display = 'inline-block';
+    document.getElementById('account-switcher').style.display = 'none';
+
     var foreground = document.getElementById('foreground-content-container');
     var listContainer = document.getElementById('shopping-list-container');
     var content = document.getElementById("add-shopping-item");

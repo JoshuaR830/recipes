@@ -128,7 +128,10 @@ function defaultTheme() {
 }
 
 function getCookie(name) {
-    var cookie = "dark";
+    var cookie = "";
+    if(name === "theme") {
+        cookie = "dark";
+    }
     var cookies = document.cookie.split(';');
     name = `${name}=`
     for(var i = 0; i < cookies.length; i++) {

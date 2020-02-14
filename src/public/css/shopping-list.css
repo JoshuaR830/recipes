@@ -42,3 +42,13 @@
     float: right;
 }
 
+.delete-me {
+    background-color: var(--error);
+    fill: var(--on-error);
+}
+
+.check-me {
+    background-color: var(--secondary);
+    fill: var(--on-secondary);
+    color: var(--on-secondary);
+}

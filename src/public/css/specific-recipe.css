@@ -73,7 +73,6 @@
     box-sizing: border-box;
     vertical-align: middle;
     border-radius: 50%;
-    color: var(--on-secondary);
     font-family: 'Roboto', sans-serif;
     text-align: center;
 }
@@ -90,7 +89,6 @@
 .step-tick {
     width: 24px;
     height: 24px;
-    fill: var(--on-primary);
 }
 
 .description-complete {

@@ -26,6 +26,23 @@ window.addEventListener('popstate', function(e) {
         allRecipes.style.display = 'inline-block';
         subtitle.innerText = "Recipes";
 
+        if (getCookie('recipeUserId').length > 0)
+        {
+            document.getElementById('shopping-list-reveal').style.display = 'inline-block';
+            document.getElementById('recipe-list-reveal').style.display = 'none';
+            document.getElementById('delete-shopping-item').style.display = 'none';
+            document.getElementById('calendar-reveal').style.display = 'inline-block';
+            document.getElementById('account-switcher').style.display = 'none';
+            document.getElementById('add-recipe-button').style.display = 'inline-block';
+        } else {
+            document.getElementById('shopping-list-reveal').style.display = 'none';
+            document.getElementById('recipe-list-reveal').style.display = 'none';
+            document.getElementById('delete-shopping-item').style.display = 'none';
+            document.getElementById('calendar-reveal').style.display = 'none';
+            document.getElementById('account-switcher').style.display = 'inline-block';
+            document.getElementById('add-recipe-button').style.display = 'none';
+        }
+
     } else if (path === '/shopping-list'){
         recipe.style.display = "none";
         allRecipes.style.display = 'none';
@@ -36,6 +53,13 @@ window.addEventListener('popstate', function(e) {
 
         shoppingList.style.display = "inline-block";
         console.log('On shopping list');
+
+        document.getElementById('shopping-list-reveal').style.display = 'none';
+        document.getElementById('recipe-list-reveal').style.display = 'inline-block';
+        document.getElementById('delete-shopping-item').style.display = 'inline-block';
+        document.getElementById('calendar-reveal').style.display = 'inline-block';
+        document.getElementById('account-switcher').style.display = 'none';
+
     } else if (path === '/login'){
         recipe.style.display = "none";
         allRecipes.style.display = 'none';
@@ -46,15 +70,86 @@ window.addEventListener('popstate', function(e) {
         
         loginContainer.style.display = "inline-block";
         console.log('On shopping list');
+        document.getElementById('shopping-list-reveal').style.display = 'none';
+        document.getElementById('recipe-list-reveal').style.display = 'inline-block';
+        document.getElementById('delete-shopping-item').style.display = 'none';
+        document.getElementById('calendar-reveal').style.display = 'none';
+        document.getElementById('account-switcher').style.display = 'none';
     } else {
         allRecipes.style.display = 'none'
         loginContainer.style.display = "none";
         recipe.style.display = "inline-block";
         shoppingList.style.display = "none";
+        if (getCookie('recipeUserId').length > 0)
+    {
+        document.getElementById('shopping-list-reveal').style.display = 'inline-block';
+        document.getElementById('recipe-list-reveal').style.display = 'none';
+        document.getElementById('delete-shopping-item').style.display = 'none';
+        document.getElementById('calendar-reveal').style.display = 'inline-block';
+        document.getElementById('account-switcher').style.display = 'none';
+        document.getElementById('add-recipe-button').style.display = 'inline-block';
+    } else {
+        document.getElementById('shopping-list-reveal').style.display = 'none';
+        document.getElementById('recipe-list-reveal').style.display = 'none';
+        document.getElementById('delete-shopping-item').style.display = 'none';
+        document.getElementById('calendar-reveal').style.display = 'none';
+        document.getElementById('account-switcher').style.display = 'inline-block';
+        document.getElementById('add-recipe-button').style.display = 'none';
+    }
     }
 });
 
+function loadRecipesPage(){
+    history.pushState(null, null, '/');
+    var allRecipes = document.getElementById('recipe-selector-container');
+    var recipe = document.getElementById('recipe-container');
+    var shoppingList = document.getElementById('shopping-list-container');
+    var loginContainer = document.getElementById('login-container');
+
+    recipe.style.display = "none";
+    shoppingList.style.display = "none";
+    loginContainer.style.display = "none";
+    allRecipes.style.display = 'inline-block';
+    subtitle.innerText = "Recipes";
+
+    if (getCookie('recipeUserId').length > 0)
+    {
+        document.getElementById('shopping-list-reveal').style.display = 'inline-block';
+        document.getElementById('recipe-list-reveal').style.display = 'none';
+        document.getElementById('delete-shopping-item').style.display = 'none';
+        document.getElementById('calendar-reveal').style.display = 'inline-block';
+        document.getElementById('account-switcher').style.display = 'none';
+        document.getElementById('add-recipe-button').style.display = 'inline-block';
+    } else {
+        document.getElementById('shopping-list-reveal').style.display = 'none';
+        document.getElementById('recipe-list-reveal').style.display = 'none';
+        document.getElementById('delete-shopping-item').style.display = 'none';
+        document.getElementById('calendar-reveal').style.display = 'none';
+        document.getElementById('account-switcher').style.display = 'inline-block';
+        document.getElementById('add-recipe-button').style.display = 'none';
+    }
+}
+
 function onRecipesLoaded() {
+    console.log(">>>>>>" + getCookie('recipeUserId'));
+    if (getCookie('recipeUserId').length > 0)
+    {
+        document.getElementById('shopping-list-reveal').style.display = 'inline-block';
+        document.getElementById('recipe-list-reveal').style.display = 'none';
+        document.getElementById('delete-shopping-item').style.display = 'none';
+        document.getElementById('calendar-reveal').style.display = 'inline-block';
+        document.getElementById('account-switcher').style.display = 'none';
+        document.getElementById('add-recipe-button').style.display = 'inline-block';
+    } else {
+        document.getElementById('shopping-list-reveal').style.display = 'none';
+        document.getElementById('recipe-list-reveal').style.display = 'none';
+        document.getElementById('delete-shopping-item').style.display = 'none';
+        document.getElementById('calendar-reveal').style.display = 'none';
+        document.getElementById('account-switcher').style.display = 'inline-block';
+        document.getElementById('add-recipe-button').style.display = 'none';
+    }
+
+
     console.log("Hello");
     var loginContainer = document.getElementById('login-container');
     loginContainer.style.display = "none";

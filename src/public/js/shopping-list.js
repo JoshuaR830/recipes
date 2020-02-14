@@ -5,6 +5,14 @@ var ticked = [];
 
 function OnShoppingListLoaded() {
     shoppingItemList = [];
+
+    
+    document.getElementById('shopping-list-reveal').style.display = 'none';
+    document.getElementById('recipe-list-reveal').style.display = 'inline-block';
+    document.getElementById('delete-shopping-item').style.display = 'inline-block';
+    document.getElementById('calendar-reveal').style.display = 'inline-block';
+    document.getElementById('account-switcher').style.display = 'none';
+    
     getShoppingList();
 }
 
@@ -31,6 +39,7 @@ function saveListItem() {
     document.getElementById('shopping-list-item-container').classList.remove('delete');
     document.getElementById('show-delete').style.display = "inline-block";
     document.getElementById('hide-delete').style.display = "none";
+    changeListCompleteIcon();
     if (listItem.length > 0) {
         displayListItem(listItem);
     }
@@ -56,11 +65,14 @@ function displayListItem(listItem){
     shoppingItem.addEventListener('click', function() {
         tickStatus(num);
     });
+
+    var toDelete = document.getElementById('shopping-list-item-container').classList.contains('delete');
+    console.log(`${toDelete ? "": "hidden"}`);
     shoppingItem.innerHTML = `
-    <div id="deletion-container-${counter}" class="status status-complete delete-me" oncontextmenu="showDeleteButton(${counter})">
+    <div id="deletion-container-${counter}" class="status ${toDelete ? "": "hidden"} status-complete delete-me" oncontextmenu="showDeleteButton(${counter})">
         <div id="status-delete-${counter}" class="status-tick"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg></div>
     </div>
-    <div id="status-container-${counter}" class="status status-complete check-me" oncontextmenu="showDeleteButton(${counter})">
+    <div id="status-container-${counter}" class="status status-complete check-me ${toDelete ? "hidden": ""}" oncontextmenu="showDeleteButton(${counter})">
     <div id="status-number-${counter}" class="status-number">${counter + 1}</div>
     <div id="status-tick-${counter}" class="status-tick hidden"><svg xmlns="http://www.w3.org/2000/svg" class="step-tick" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
     </div>
@@ -98,15 +110,15 @@ function toggleItemDeletion() {
     var list = document.getElementById('shopping-list-item-container');
     if (list.classList.contains('delete'))
     {
+        list.classList.remove('delete');
         document.getElementById('show-delete').style.display = "inline-block";
         document.getElementById('hide-delete').style.display = "none";
         changeListCompleteIcon()
-        list.classList.remove('delete');
     } else {
+        list.classList.add('delete');
         document.getElementById('show-delete').style.display = "none";
         document.getElementById('hide-delete').style.display = "inline-block";
         changeListCompleteIcon()
-        list.classList.add('delete');
     }
 }
 
@@ -115,19 +127,23 @@ function changeListCompleteIcon() {
     checks = document.querySelectorAll('.check-me');
     deletes = document.querySelectorAll('.delete-me');
 
+    console.log(list.classList.contains('delete'));
+
     if (list.classList.contains('delete')) {
+        console.log('delete');
         checks.forEach(function(status) {
-            status.style.display = 'inline-block';
-        });
-        deletes.forEach(function(status) {
             status.style.display = 'none';
         });
+        deletes.forEach(function(status) {
+            status.style.display = 'inline-block';
+        });
     } else {
+        console.log('dont delete');
         checks.forEach(function(status) {
-            status.style.display = 'none'
+            status.style.display = 'inline-block'
         });
         deletes.forEach(function(status) {
-            status.style.display = 'inline-block'
+            status.style.display = 'none'
         });
     }
 }

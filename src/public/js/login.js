@@ -5,6 +5,11 @@ function loadLogin() {
     var loginContainer = document.getElementById('login-container');
     var content = document.getElementById("account-switcher");
 
+    document.getElementById('shopping-list-reveal').style.display = 'none';
+    document.getElementById('recipe-list-reveal').style.display = 'inline-block';
+    document.getElementById('delete-shopping-item').style.display = 'none';
+    document.getElementById('calendar-reveal').style.display = 'none';
+    document.getElementById('account-switcher').style.display = 'none';
 
     if(!document.contains(foreground)){
         console.log("No content");
