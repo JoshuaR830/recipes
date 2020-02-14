@@ -40,7 +40,7 @@ function loadShoppingList() {
     allRecipes.style.display = 'none';
     loginContainer.style.display = "none";
 
-    title.innerText = "Shopping";
+    title.innerText = "Shop";
     subtitle.innerText = "Add the items you need";
 
     shoppingList.style.display = "inline-block";
