@@ -67,7 +67,8 @@
     display: inline-block;
     width: 56px;
     height: 56px;
-    padding: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     font-size: 24px;
     line-height: 24px;
     box-sizing: border-box;
