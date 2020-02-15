@@ -1,9 +1,12 @@
-.schedule-container{
-    width: calc(100% - 32px);
+body {
     overflow-x: hidden;
 }
 
-.conainer {
+.schedule-container{
+    width: calc(100% - 32px);
+}
+
+.foreground {
     overflow-x: hidden;
 }
 
@@ -18,20 +21,26 @@
 
 .day {
     width: 100%;
-    background-color: blue;
+    background-color: var(--secondary);
+    color: var(--on-secondary);
     height: 500px;
     display: inline-block;
     border-radius: 32px;
     position: absolute;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    z-index: 4;
+    border: 1px solid var(--secondary-variant);
 }
 
 .odd {
-    background-color: red;
-    left: 0px;
+    /* left: 0;
+    transform: translateX(-100%); */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .even {
-    background-color: yellow;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -39,22 +48,30 @@
 .enter-left {
     animation: enter-from-left;
     animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    animation-delay: 1s;
 }
 
 .exit-right {
     animation: exit-to-right;
+    background-color: var(--secondary-variant);
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
-    animation-delay: 1s;
 }
 
+.enter-left {
+    animation: enter-from-right;
+    animation-duration: 0.5s;
+}
+
+.exit-left {
+    animation: exit-to-left;
+    background-color: var(--secondary-variant);
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
 
 @media only screen and (min-width: 600px) {
     .day-container {
         display: inline-block;
-        overflow: auto;
         width: 100%;
     }
 
@@ -70,7 +87,8 @@
 
 @keyframes enter-from-left {
     0% {
-        left: 350px;
+        left: 0;
+        transform: translateX(-100%);
     }
     
     100% {
@@ -86,26 +104,32 @@
     }
     
     100% {
-        left: 1000px;
+        left: 100%;
+        transform: translateX(100%);
+
     }
 }
 
 @keyframes enter-from-right {
     0% {
-
+        left: 100%;
+        transform: translateX(100%);
     }
     
     100% {
-
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
 @keyframes exit-to-left{
     0% {
-
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     100% {
-
+        left: -100%;
+        transform: translateX(-100%);
     }
 }
