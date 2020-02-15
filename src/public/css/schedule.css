@@ -1,22 +1,53 @@
 .schedule-container{
     width: calc(100% - 32px);
+    overflow-x: hidden;
+}
+
+.conainer {
+    overflow-x: hidden;
 }
 
 .day-container {
-    display: flex;
-    overflow-x: scroll;
+    display: inline-block;
+    overflow-x: hidden;
     overflow-y: scroll;
     width: 100%;
+    max-width: 350px;
+    background-color: purple;
 }
 
 .day {
-    max-width: 300px;
-    min-width: 100%;
+    width: 100%;
     background-color: blue;
     height: 500px;
-    display: flex;
-    margin-right: 32px;
+    display: inline-block;
     border-radius: 32px;
+    position: absolute;
+}
+
+.odd {
+    background-color: red;
+    left: 0px;
+}
+
+.even {
+    background-color: yellow;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.enter-left {
+    animation: enter-from-left;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+.exit-right {
+    animation: exit-to-right;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
 }
 
 
@@ -29,12 +60,52 @@
 
     .day {
         margin-top: 32px;
-        margin-left: auto;
-        margin-right: auto;
-        min-width: 350px;
-        max-width: 300px;
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+        min-width: 300px;
+        max-width: 350px;
         display: block;
     }
+}
 
+@keyframes enter-from-left {
+    0% {
+        left: 350px;
+    }
+    
+    100% {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
 
+@keyframes exit-to-right {
+    0% {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    100% {
+        left: 1000px;
+    }
+}
+
+@keyframes enter-from-right {
+    0% {
+
+    }
+    
+    100% {
+
+    }
+}
+
+@keyframes exit-to-left{
+    0% {
+
+    }
+
+    100% {
+
+    }
 }
