@@ -1,0 +1,40 @@
+.schedule-container{
+    width: calc(100% - 32px);
+}
+
+.day-container {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.day {
+    max-width: 300px;
+    min-width: 100%;
+    background-color: blue;
+    height: 500px;
+    display: flex;
+    margin-right: 32px;
+    border-radius: 32px;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .day-container {
+        display: inline-block;
+        overflow: auto;
+        width: 100%;
+    }
+
+    .day {
+        margin-top: 32px;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 350px;
+        max-width: 300px;
+        display: block;
+    }
+
+
+}

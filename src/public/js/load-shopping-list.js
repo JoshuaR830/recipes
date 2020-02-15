@@ -32,6 +32,7 @@ function loadShoppingList() {
     var allRecipes = document.getElementById('recipe-selector-container');
     var recipe = document.getElementById('recipe-container');
     var shoppingList = document.getElementById('shopping-list-container');
+    var schedule = document.getElementById('schedule-container');
 
     if (!location.pathname.includes('/shopping-list')) {
         history.pushState(null, null, '/shopping-list');
@@ -39,6 +40,8 @@ function loadShoppingList() {
     recipe.style.display = "none";
     allRecipes.style.display = 'none';
     loginContainer.style.display = "none";
+    schedule.style.display = 'none';
+
 
     title.innerText = "Shop";
     subtitle.innerText = "Add the items you need";

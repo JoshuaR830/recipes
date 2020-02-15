@@ -34,14 +34,16 @@ function loadLogin() {
     var allRecipes = document.getElementById('recipe-selector-container');
     var recipe = document.getElementById('recipe-container');
     var shoppingList = document.getElementById('shopping-list-container');
+    var schedule = document.getElementById('schedule-container');
 
     if (!location.pathname.includes('/login')) {
         history.pushState(null, null, '/login');
     }
+
     recipe.style.display = "none";
     allRecipes.style.display = 'none';
     shoppingList.style.display = "none";
-    
+    schedule.style.display = 'inline-block';    
     
     title.innerText = "Recipes";
     subtitle.innerText = "Log into your account";

@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="/css/recipe-selector.css">
         <link rel="stylesheet" type="text/css" href="../css/shopping-list.css">
         <link rel="stylesheet" type="text/css" href="../css/login.css">
+        <link rel="stylesheet" type="text/css" href="../css/schedule.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link rel="icon" href="/images/recipes-logo.png">
         <script src="/js/themes.js"></script>
@@ -20,6 +21,8 @@
         <script src="/js/specific-recipe.js"></script>
         <script src="../js/shopping-list.js"></script>
         <script src="../js/login.js"></script>
+        <script src="../js/load-schedule.js"></script>
+        <script src="../js/schedule.js"></script>
     </head>
     <body>
         <div class="backdrop">
@@ -34,7 +37,7 @@
                         <svg id="show-delete" xmlns="http://www.w3.org/2000/svg" class="image-size" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/></svg>
                         <svg id="hide-delete" class="image-size hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/></svg>
                     </div>
-                    <div id="calendar-reveal" class="menu reveal-background shopping-list-reveal" onclick="loadShoppingList()"><svg xmlns="http://www.w3.org/2000/svg" class="image-size" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V10h16v11zm0-13H4V5h16v3z"/></svg></div>
+                    <div id="calendar-reveal" class="menu reveal-background shopping-list-reveal" onclick="loadSchedule()"><svg xmlns="http://www.w3.org/2000/svg" class="image-size" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V10h16v11zm0-13H4V5h16v3z"/></svg></div>
 
                     <div id="account-switcher" class="menu reveal-background shopping-list-reveal" onclick="loadLogin()">
                         <div id="login-icon" class="login-icon">

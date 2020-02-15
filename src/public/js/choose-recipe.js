@@ -105,12 +105,14 @@ function loadRecipesPage(){
     var recipe = document.getElementById('recipe-container');
     var shoppingList = document.getElementById('shopping-list-container');
     var loginContainer = document.getElementById('login-container');
+    var schedule = document.getElementById('schedule-container');
 
     recipe.style.display = "none";
     shoppingList.style.display = "none";
     loginContainer.style.display = "none";
     allRecipes.style.display = 'inline-block';
     subtitle.innerText = "Recipes";
+    schedule.style.display = 'none';
 
     if (getCookie('recipeUserId').length > 0)
     {

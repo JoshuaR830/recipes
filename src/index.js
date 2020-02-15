@@ -67,6 +67,11 @@ app.get('/login-content', function(req, res) {
     res.sendFile(`${__dirname}/partials/login.html`);
 });
 
+app.get('/schedule-content', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.sendFile(`${__dirname}/partials/schedule.html`);
+});
+
 app.post('/fileupload', function(req, res) {
     var form = formidable.IncomingForm();
     try {

@@ -66,6 +66,11 @@ body, html {
     box-sizing: border-box;
 }
 
+.container {
+    display: inline-block;
+    width: 100%;
+}
+
 .subtitle-container {
     background-color: var(--surface);
     color: var(--on-surface);
