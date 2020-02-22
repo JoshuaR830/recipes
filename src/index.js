@@ -72,6 +72,13 @@ app.get('/schedule-content', function(req, res) {
     res.sendFile(`${__dirname}/partials/schedule.html`);
 });
 
+
+app.get('/schedule-card-practice', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.sendFile(`${__dirname}/schedule-card-design.html`);
+});
+
+
 app.post('/fileupload', function(req, res) {
     var form = formidable.IncomingForm();
     try {
