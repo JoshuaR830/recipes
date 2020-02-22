@@ -111,6 +111,17 @@ function onScheduledRecipesRetrieved(){
     document.getElementById('odd-dinner-description').textContent = dinner.Description;
     document.getElementById('odd-dinner-image').src = dinner.ImageUrl;
 
+    var infoExpandables = document.querySelectorAll('.schedule-bar');
+    console.log("Hi");
+    console.log(infoExpandables);
+    console.log("bye");
+    infoExpandables.forEach(function(info) {
+        console.log("Added");
+        info.addEventListener('click', function(event) {
+            console.log("Hello " + event);
+        });
+    });
+
 }
 
 function touch(event) {
@@ -325,6 +336,7 @@ function swipedCleanUp(active, inactive){
 function getScheduledRecipes() {
 
     xhttp = new XMLHttpRequest();
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);

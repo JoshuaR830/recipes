@@ -183,6 +183,7 @@ function getImageRequest(name) {
 
 function attemptLogin(userName, password) {
     var xhttp = new XMLHttpRequest();
+
     xhttp.open("POST", `http://${hostname}/api/login`);
     var data = {};
     data.userName = userName;
@@ -192,7 +193,7 @@ function attemptLogin(userName, password) {
 
     console.log(json);
 
-    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {

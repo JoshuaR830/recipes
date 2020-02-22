@@ -1,66 +1,105 @@
 <div id="day-container" class="day-container">
     <div id="even-schedule" class="day even">
         <div id="schedule-card-container-even">
-
-        <div id="day-name-even"></div>
-        <div id="recipe-4" class="card">
-            <div class="card-image">
-                <img id="even-breakfast-image" class="image" src="http://flatfish.online:38120/images/IMG_20200209_214516147.jpg"">
-            </div>
-            <div class="card-body">
-                <div id="even-breakfast-title" class="card-title">Name</div>
-                <div id="even-breakfast-description" class="card-text">Description</div>
-            </div>
-        </div>
-        <div id="recipe-5" class="card">
-         <div class="card-image">
-                <img id="even-lunch-image" class="image" src="http://flatfish.online:38120/images/IMG_20200209_214516147.jpg">
-            </div>
-          <div class="card-body">
-                <div id="even-lunch-title" class="card-title">Name</div>
-                <div id="even-lunch-description" class="card-text">Description</div>
+            <div id="day-name-even"></div>
+            <div id="recipe-4" class="schedule-card">
+                <div class="schedule-image">
+                    <img id="even-breakfast-image" class="schedule-img" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
+                    <div class="schedule-bar">
+                        <div class="schedule-title">Breakfast</div>
+                        <div class="schedule-drop-down"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+                    </div>
                 </div>
-        </div>
-        <div id="recipe-6" class="card">
-            <div class="card-image">
-                <img id="even-dinner-image" class="image" src="http://flatfish.online:38120/images/IMG_20200209_214516147.jpg">
+                <div class="schedule-info">
+                    <div id="expandable-4" class="expandable-info">
+                        <div id="even-breakfast-title" class="schedule-recipe-name"></div>
+                        <div id="even-breakfast-description"class="schedule-recipe-description"></div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div id="even-dinner-title" class="card-title">Name</div>
-                <div id="even-dinner-description" class="card-text">Description</div>
+
+            <div id="recipe-5" class="schedule-card">
+                <div class="schedule-image">
+                    <img id="even-lunch-image" class="schedule-img" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
+                    <div class="schedule-bar">
+                        <div class="schedule-title">Lunch</div>
+                        <div class="schedule-drop-down"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+                    </div>
+                </div>
+                <div class="schedule-info">
+                    <div id="expandable-5" class="expandable-info">
+                        <div id="even-lunch-title" class="schedule-recipe-name"></div>
+                        <div id="even-lunch-description" class="schedule-recipe-description"></div>
+                    </div>  
+                </div>
             </div>
-        </div>
+
+            <div id="recipe-6" class="schedule-card">
+                <div class="schedule-image"><img id="even-dinner-image" class="schedule-img" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
+                    <div class="schedule-bar">
+                        <div class="schedule-title">Dinner</div>
+                        <div class="schedule-drop-down"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></svg></div>
+                    </div>
+                </div>
+                <div class="schedule-info">
+                    <div id="expandable-6" class="expandable-info">
+                        <div id="even-dinner-title" class="schedule-recipe-name"></div>
+                        <div id="even-dinner-description" class="schedule-recipe-description"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
+    <div id="day-name-even"></div>
     <div id="odd-schedule" class="day odd">
-        <div id="day-name-odd"></div>
         <div id="schedule-card-container-odd">
-            <div id="recipe-1" class="card">
-                <div class="card-image">
-                    <img id="odd-breakfast-image" class="image" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
+
+            <div id="day-name-odd"></div>
+            <div id="recipe-1" class="schedule-card schedule-card-active">
+                <div class="schedule-image schedule-image-active"><img id="odd-breakfast-image" class="schedule-img" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
+                    <div class="schedule-bar schedule-bar-active">
+                        <div class="schedule-title">Breakfast</div>
+                        <div class="schedule-drop-down"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div id="odd-breakfast-title" class="card-title">Name</div>
-                    <div id="odd-breakfast-description" class="card-text">Description</div>
-                </div>
-            </div>
-            <div id="recipe-2" class="card">
-                <div class="card-image">
-                    <img id="odd-lunch-image" class="image" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
-                </div>
-                <div class="card-body">
-                    <div id="odd-lunch-title" class="card-title">Name</div>
-                    <div id="odd-lunch-description" class="card-text">Description</div>
+                <div class="schedule-info">
+                    <div id="expandable-1" class="expandable-info expandable-info-active">
+                        <div id="odd-breakfast-title" class="schedule-recipe-name"></div>
+                        <div id="odd-breakfast-description" class="schedule-recipe-description"></div>
+                    </div>
                 </div>
             </div>
-            <div id="recipe-3" class="card">
-                <div class="card-image">
-                    <img id="odd-dinner-image" class="image" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
+
+            <div id="recipe-2" class="schedule-card">
+                <div class="schedule-image">
+                    <img id="odd-lunch-image" class="schedule-img" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
+                    <div class="schedule-bar">
+                        <div class="schedule-title">Lunch</div>
+                        <div class="schedule-drop-down"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div id="odd-dinner-title" class="card-title">Name</div>
-                    <div id="odd-dinner-description" class="card-text">Description</div>
+                <div class="schedule-info">
+                    
+                    <div id="expandable-2" class="expandable-info">
+                        <div id="odd-lunch-title" class="schedule-recipe-name"></div>
+                        <div id="odd-lunch-description" class="schedule-recipe-description"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="recipe-3" class="schedule-card">
+                <div class="schedule-image">
+                    <img id="odd-dinner-image" class="schedule-img" src="http://flatfish.online:38120/images/IMG_20200201_134925834.jpg">
+                    <div class="schedule-bar">
+                        <div class="schedule-title">Dinner</div>
+                        <div class="schedule-drop-down"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></svg></div>
+                    </div>
+                </div>
+                <div class="schedule-info">
+                    <div id="expandable-3" class="expandable-info">
+                        <div id="odd-dinner-title" class="schedule-recipe-name"></div>
+                        <div id="odd-dinner-description" class="schedule-recipe-description"></div>
+                    </div>
                 </div>
             </div>
         </div>

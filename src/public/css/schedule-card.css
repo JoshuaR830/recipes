@@ -1,33 +1,28 @@
-.schedule-container {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 300px;
-    width: 100%;
-    background-color: var(--secondary);
-    padding-top: 32px;
-    padding-bottom: 32px;
-    margin-top: 32px;
-    border-radius: 32px;
-}
 .schedule-card {
     width: 100%;
-    background-color: blue;
     border-radius: 32px;
     max-width: 250px;
     margin-bottom: 32px;
     margin-right: auto;
     margin-left: auto;
-    height: 194px;
     position: relative;
 }
 
+.schedule-card-active {
+    border-radius: 32px 32px 0 0;
+}
+
 .schedule-image {
-    background-color: red;
     border-radius: 32px;
     width: 100%;
-    height: 100%;
+    height: 194px;
     overflow: hidden;
     object-fit: cover;
+    position: relative;
+}
+
+.schedule-image-active {
+    border-radius: 32px 32px 0 0;
 }
 
 .schedule-img {
@@ -39,6 +34,18 @@
 
 }
 
+.expandable-info {
+    display: none;
+    padding: 16px;
+    border-radius: 0 0 32px 32px;
+    background-color: #0000008e;
+    text-align: left;
+}
+
+.expandable-info-active {
+    display: block;
+}
+
 .schedule-bar {
     width: 100%;
     position: absolute;
@@ -46,6 +53,11 @@
     height: 56px;
     background-color: #0000008e;
     border-radius: 0 0 32px 32px;
+}
+
+.schedule-bar-active {
+    background-color: #0000008e;
+    border-radius: 32px 32px 0 0;
 }
 
 .schedule-title {
