@@ -336,7 +336,6 @@ function swipedCleanUp(active, inactive){
 function getScheduledRecipes() {
 
     xhttp = new XMLHttpRequest();
-    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);
@@ -351,11 +350,12 @@ function getScheduledRecipes() {
                 new ScheduledDay("Friday", response.Friday.Breakfast, response.Friday.Lunch, response.Friday.Dinner)
             ];
             console.log(recipeDays);
-
+            
             onScheduledRecipesRetrieved();
         }
     };
-
+    
     xhttp.open("GET", `http://${hostname}/api/scheduledrecipes/${getCookie("recipeUserId")}`);
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhttp.send();
 }
