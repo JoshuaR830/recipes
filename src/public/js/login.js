@@ -275,9 +275,12 @@ function hasImage(loginImage) {
 }
 
 function validUserName(data) {
-    console.log("Data");
+    console.log("Datargh");
     console.log(data);
-    document.cookie = `recipeUserId=${data.Id}`;
+    console.log("Hidehidehi");
+    console.log(":::::: " + data.UserId);
+    document.cookie = `recipeUserId=${data.UserId}`;
+    console.log(":::::: " + data.UserId);
 
     var nameInput = document.getElementById('name-input');
     nameInput.classList.remove("error");
