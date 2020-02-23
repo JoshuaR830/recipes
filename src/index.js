@@ -22,6 +22,10 @@ app.get('/login', function(req, res) {
     res.sendFile(`${__dirname}/backdrop.html`);
 })
 
+app.get('/planner', function(req, res) {
+    res.sendFile(`${__dirname}/backdrop.html`);
+})
+
 app.get('/drag-and-drop', function(req, res) {
     console.log(req.params.uid);
     res.sendFile(`${__dirname}/drag-and-drop.html`);
