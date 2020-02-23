@@ -117,6 +117,7 @@ function onScheduledRecipesRetrieved(){
     document.getElementById('odd-dinner-image').src = dinner.ImageUrl;
 
     var infoExpandables = document.querySelectorAll('.schedule-bar');
+    
     infoExpandables.forEach(function(info) {
         info.addEventListener('click', function(event) {
             var number = event.currentTarget.id.split('-')[2];
@@ -128,7 +129,7 @@ function onScheduledRecipesRetrieved(){
                 document.getElementById(`expandable-${number}`).classList.remove('expandable-info-active');
                 document.getElementById(`drop-symbol-down-${number}`).style.display = "block";
                 document.getElementById(`drop-symbol-up-${number}`).style.display = "none";
-
+                
             } else {
                 document.getElementById(`recipe-${number}`).classList.add('schedule-card-active');
                 document.getElementById(`schedule-image-${number}`).classList.add('schedule-image-active');
@@ -139,7 +140,18 @@ function onScheduledRecipesRetrieved(){
             }
         });
     });
-
+    
+    var images = document.querySelectorAll('.schedule-img');
+    images.forEach(function(image) {
+        image.addEventListener('click', function(event) {
+            console.log(event.currentTarget.id);
+            var time = event.currentTarget.id.split('-')[1];
+            console.log(time);
+            var recipeId = recipeDays[counter][time].Id;
+            console.log(recipeId);
+            getRecipeById(recipeId);
+        })
+    })
 }
 
 function touch(event) {
@@ -175,6 +187,10 @@ function swiped(event) {
     if(event.type === "mouseup") {
         var upX = event.clientX;
         var upY = event.clientY;
+    }
+
+    if (Math.abs(upY - downY) > 100) {
+        return;
     }
     
     console.log(`{${upX},${upY}}`);
