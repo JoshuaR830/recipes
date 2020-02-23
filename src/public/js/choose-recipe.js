@@ -11,6 +11,7 @@ window.addEventListener('popstate', function(e) {
     var recipe = document.getElementById('recipe-container');
     var shoppingList = document.getElementById('shopping-list-container');
     var loginContainer = document.getElementById('login-container');
+    var schedule = document.getElementById('schedule-container');
 
     if(document.getElementById('foreground').classList.contains("logged-in"))
     {
@@ -23,6 +24,7 @@ window.addEventListener('popstate', function(e) {
         recipe.style.display = "none";
         shoppingList.style.display = "none";
         loginContainer.style.display = "none";
+        schedule.style.display = "none";
         allRecipes.style.display = 'inline-block';
         subtitle.innerText = "Recipes";
 
@@ -47,6 +49,7 @@ window.addEventListener('popstate', function(e) {
         recipe.style.display = "none";
         allRecipes.style.display = 'none';
         loginContainer.style.display = "none";
+        schedule.style.display = "none";
 
         title.innerText = "Shop";
         subtitle.innerText = "Add the items you need";
@@ -60,10 +63,30 @@ window.addEventListener('popstate', function(e) {
         document.getElementById('calendar-reveal').style.display = 'inline-block';
         document.getElementById('account-switcher').style.display = 'none';
 
+    }
+    else if (path === '/planner'){
+        recipe.style.display = "none";
+        allRecipes.style.display = 'none';
+        loginContainer.style.display = "none";
+        shoppingList.style.display = "none";
+        schedule.style.display = "inline-block";
+
+        title.innerText = "Planner";
+        subtitle.innerText = "Plan your meals for the week";
+
+        console.log('On shopping list');
+
+        document.getElementById('shopping-list-reveal').style.display = 'none';
+        document.getElementById('recipe-list-reveal').style.display = 'inline-block';
+        document.getElementById('delete-shopping-item').style.display = 'inline-block';
+        document.getElementById('calendar-reveal').style.display = 'inline-block';
+        document.getElementById('account-switcher').style.display = 'none';
+
     } else if (path === '/login'){
         recipe.style.display = "none";
         allRecipes.style.display = 'none';
         shoppingList.style.display = "none";
+        schedule.style.display = "none";
         
         title.innerText = "Recipe";
         subtitle.innerText = "Log into your account";
@@ -78,24 +101,25 @@ window.addEventListener('popstate', function(e) {
     } else {
         allRecipes.style.display = 'none'
         loginContainer.style.display = "none";
+        schedule.style.display = "none";
         recipe.style.display = "inline-block";
         shoppingList.style.display = "none";
         if (getCookie('recipeUserId').length > 0)
-    {
-        document.getElementById('shopping-list-reveal').style.display = 'inline-block';
-        document.getElementById('recipe-list-reveal').style.display = 'none';
-        document.getElementById('delete-shopping-item').style.display = 'none';
-        document.getElementById('calendar-reveal').style.display = 'inline-block';
-        document.getElementById('account-switcher').style.display = 'none';
-        document.getElementById('add-recipe-button').style.display = 'inline-block';
-    } else {
-        document.getElementById('shopping-list-reveal').style.display = 'none';
-        document.getElementById('recipe-list-reveal').style.display = 'none';
-        document.getElementById('delete-shopping-item').style.display = 'none';
-        document.getElementById('calendar-reveal').style.display = 'none';
-        document.getElementById('account-switcher').style.display = 'inline-block';
-        document.getElementById('add-recipe-button').style.display = 'none';
-    }
+        {
+            document.getElementById('shopping-list-reveal').style.display = 'inline-block';
+            document.getElementById('recipe-list-reveal').style.display = 'none';
+            document.getElementById('delete-shopping-item').style.display = 'none';
+            document.getElementById('calendar-reveal').style.display = 'inline-block';
+            document.getElementById('account-switcher').style.display = 'none';
+            document.getElementById('add-recipe-button').style.display = 'inline-block';
+        } else {
+            document.getElementById('shopping-list-reveal').style.display = 'none';
+            document.getElementById('recipe-list-reveal').style.display = 'none';
+            document.getElementById('delete-shopping-item').style.display = 'none';
+            document.getElementById('calendar-reveal').style.display = 'none';
+            document.getElementById('account-switcher').style.display = 'inline-block';
+            document.getElementById('add-recipe-button').style.display = 'none';
+        }
     }
 });
 
@@ -295,7 +319,9 @@ function renderRecipes(recipes) {
         loadShoppingList();
     } else if (location.pathname.includes('/login')) {
         loadLogin();
-    } else {
+    }else if (location.pathname.includes('/planner')) {
+        loadSchedule();
+     } else {
         allRecipes.style.display = 'inline-block';
     }
 }

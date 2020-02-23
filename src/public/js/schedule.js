@@ -21,6 +21,9 @@ class ScheduledDay {
 }
 
 function onScheduleLoaded() {
+    if (!location.pathname.includes('/planner')) {
+        history.pushState(null, null, '/planner');
+    }
     getScheduledRecipes();
 }
 

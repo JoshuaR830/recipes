@@ -275,7 +275,7 @@ function hasImage(loginImage) {
 }
 
 function validUserName(data) {
-    console.log("Datargh");
+    console.log("Data");
     console.log(data);
     console.log("Hidehidehi");
     console.log(":::::: " + data.UserId);
