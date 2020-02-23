@@ -25,6 +25,11 @@ function onScheduleLoaded() {
 }
 
 function onScheduledRecipesRetrieved(){
+    var ups = document.querySelectorAll('.schedule-up');
+    ups.forEach(function(up) {
+        up.style.display = "none";
+    });
+
     document.getElementById('shopping-list-reveal').style.display = 'inline-block';
     document.getElementById('recipe-list-reveal').style.display = 'inline-block';
     document.getElementById('delete-shopping-item').style.display = 'none';
@@ -112,13 +117,26 @@ function onScheduledRecipesRetrieved(){
     document.getElementById('odd-dinner-image').src = dinner.ImageUrl;
 
     var infoExpandables = document.querySelectorAll('.schedule-bar');
-    console.log("Hi");
-    console.log(infoExpandables);
-    console.log("bye");
     infoExpandables.forEach(function(info) {
-        console.log("Added");
         info.addEventListener('click', function(event) {
-            console.log("Hello " + event);
+            var number = event.currentTarget.id.split('-')[2];
+            if(event.currentTarget.classList.contains('schedule-bar-active'))
+            {
+                document.getElementById(`recipe-${number}`).classList.remove('schedule-card-active');
+                document.getElementById(`schedule-image-${number}`).classList.remove('schedule-image-active');
+                document.getElementById(`schedule-bar-${number}`).classList.remove('schedule-bar-active');
+                document.getElementById(`expandable-${number}`).classList.remove('expandable-info-active');
+                document.getElementById(`drop-symbol-down-${number}`).style.display = "block";
+                document.getElementById(`drop-symbol-up-${number}`).style.display = "none";
+
+            } else {
+                document.getElementById(`recipe-${number}`).classList.add('schedule-card-active');
+                document.getElementById(`schedule-image-${number}`).classList.add('schedule-image-active');
+                document.getElementById(`schedule-bar-${number}`).classList.add('schedule-bar-active');
+                document.getElementById(`expandable-${number}`).classList.add('expandable-info-active');
+                document.getElementById(`drop-symbol-down-${number}`).style.display = "none";
+                document.getElementById(`drop-symbol-up-${number}`).style.display = "block";
+            }
         });
     });
 
@@ -159,8 +177,6 @@ function swiped(event) {
         var upY = event.clientY;
     }
     
-    
-
     console.log(`{${upX},${upY}}`);
 
     if (Math.abs(upX - downX) > 50) {
@@ -197,6 +213,30 @@ function moveScheduleDay(direction) {
 
     oddCards = document.getElementById('schedule-card-container-odd');
     evenCards = document.getElementById('schedule-card-container-even');
+
+    var bars = document.querySelectorAll('.schedule-bar');
+    bars.forEach(function(bar) {
+        console.log(bar.id);
+        console.log(bar.id.split('-')[2]);
+        var number = bar.id.split('-')[2];
+        document.getElementById(`recipe-${number}`).classList.remove('schedule-card-active');
+        document.getElementById(`schedule-image-${number}`).classList.remove('schedule-image-active');
+        document.getElementById(`schedule-bar-${number}`).classList.remove('schedule-bar-active');
+        document.getElementById(`expandable-${number}`).classList.remove('expandable-info-active');
+    });
+
+    var downs = document.querySelectorAll('.schedule-down');
+    downs.forEach(function(down) {
+        down.style.display = "block";
+    });
+    
+    var ups = document.querySelectorAll('.schedule-up');
+    ups.forEach(function(up) {
+        up.style.display = "none";
+    });
+    
+    
+    
 
     if(isOdd) {
         // odd.innerHTML = counter;
